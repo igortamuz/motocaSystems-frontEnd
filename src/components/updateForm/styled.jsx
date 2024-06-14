@@ -64,7 +64,7 @@ const Input = styled.input`
 `;
 
 const InputCode = styled.input`
-  border: 0.5px solid #E7E3FC;
+  border: 0.5px solid #88839C;
   padding: 10px 10px 10px 30px; 
   font-size: 14px;
   outline: none;
@@ -73,17 +73,17 @@ const InputCode = styled.input`
   height: 50px;
   margin-bottom: 35px;
   border-radius: 5px;
-  color: #E7E3FC;
+  color: #88839C;
   background: url("#") no-repeat left 10px center;
   background-size: 20px;
   font-weight: 500px;
 
   &::placeholder {
-    color: #E7E3FC;
+    color: #88839C;
   }
 
   &:focus {
-    border-color: #E7E3FC;
+    border-color: #88839C;
     box-shadow: 0 0 5px rgba(46, 27, 71, 0.5);
   }
 `;
@@ -93,7 +93,7 @@ const HashSymbol = styled.div`
   top: 50%;
   left: 15px;
   transform: translateY(-120%);
-  color: #E7E3FC;
+  color: #88839C;
   font-weight: 500;
 `;
 
@@ -256,6 +256,15 @@ const FloatingMessage = styled.div`
   }
 `;
 
+const LabelStyledCode = styled.span`
+  position: absolute;
+  top: -10px;
+  left: 10px;
+  background-color: #2A233C;
+  color: #88839C;
+  padding: 0 5px;
+  font-size: 13px;
+`;
 export {
   FormContainer,
   InputCode,
@@ -273,5 +282,6 @@ export {
   DropdownButton,
   ErrorMessage,
   DropdownErrorMessage,
-  FloatingMessage
+  FloatingMessage,
+  LabelStyledCode
 };
