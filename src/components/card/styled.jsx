@@ -18,7 +18,7 @@ const ItemCardContainer = styled.div`
     }
 
     &.fade-out {
-        animation: fadeOut 3s forwards;
+        animation: fadeOut 0.2s forwards;
     }
 
     @keyframes fadeIn {

@@ -8,8 +8,7 @@ import { Link } from 'react-router-dom';
 export default function Card({ id, code, name, price, color, status }) {
     //States
     const [floatingMessage, setFloatingMessage] = useState({ visible: false, message: '', type: '' });
-    const [deleted, setDeleted] = useState(false);
-    const [loading, setLoading] = useState(false); 
+    const [loading, setLoading] = useState(false);
 
     //Handle
     const handleDelete = async () => {
@@ -19,10 +18,9 @@ export default function Card({ id, code, name, price, color, status }) {
         }
 
         try {
-            setLoading(true); 
+            setLoading(true);
             await axios.delete(`http://localhost:3001/motos/${id}`);
             setFloatingMessage({ visible: true, message: "Item excluído com sucesso!", type: "success" });
-            setDeleted(true);
             setTimeout(() => {
                 console.log("Item excluído com sucesso!");
             }, 1500);
@@ -30,41 +28,41 @@ export default function Card({ id, code, name, price, color, status }) {
             setFloatingMessage({ visible: true, message: "Erro ao excluir o item!", type: "error" });
             console.error("Erro ao excluir o item:", error);
         } finally {
-            setLoading(false); 
+            setLoading(false);
         }
     };
 
     return (
         <>
-            {!deleted && (
-                <ItemCardContainer className={deleted ? 'fade-out' : 'fade-in'}>
-                    <ItemInfo>
-                        <ItemId>#{code}</ItemId>
-                        <ItemInfoPart2>
-                            <ItemNameNBadgeDiv>
-                                <ItemName>{name}</ItemName>
-                                <StatusBadge status={status}>{status}</StatusBadge>
-                            </ItemNameNBadgeDiv>
-                            <ItemValue>Valor: R$ {price}</ItemValue>
-                            <ItemColor>Cor: {color}</ItemColor>
-                        </ItemInfoPart2>
-                    </ItemInfo>
-                    <ItemActions>
-                        {loading ? (
-                            <Spinner />
-                        ) : (
-                            <TrashButton onClick={handleDelete}>
-                                <img src={trashIcon} alt="TrashButton" height="20" />
-                            </TrashButton>
-                        )}
-                        <Link to={`editar/${id}`} style={{ textDecoration: 'none' }}>
-                            <EyeButton>
-                                <img src={eyeIcon} alt="Eyebutton" height="20" />
-                            </EyeButton>
-                        </Link>
-                    </ItemActions>
-                </ItemCardContainer>
-            )}
+            (
+            <ItemCardContainer>
+                <ItemInfo>
+                    <ItemId>#{code}</ItemId>
+                    <ItemInfoPart2>
+                        <ItemNameNBadgeDiv>
+                            <ItemName>{name}</ItemName>
+                            <StatusBadge status={status}>{status}</StatusBadge>
+                        </ItemNameNBadgeDiv>
+                        <ItemValue>Valor: R$ {price}</ItemValue>
+                        <ItemColor>Cor: {color}</ItemColor>
+                    </ItemInfoPart2>
+                </ItemInfo>
+                <ItemActions>
+                    {loading ? (
+                        <Spinner />
+                    ) : (
+                        <TrashButton onClick={handleDelete}>
+                            <img src={trashIcon} alt="TrashButton" height="20" />
+                        </TrashButton>
+                    )}
+                    <Link to={`editar/${id}`} style={{ textDecoration: 'none' }}>
+                        <EyeButton>
+                            <img src={eyeIcon} alt="Eyebutton" height="20" />
+                        </EyeButton>
+                    </Link>
+                </ItemActions>
+            </ItemCardContainer>
+            )
             {floatingMessage.visible && (
                 <FloatingMessage type={floatingMessage.type}>
                     {floatingMessage.message}
