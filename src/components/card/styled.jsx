@@ -17,26 +17,12 @@ const ItemCardContainer = styled.div`
         animation: fadeIn 1.5s forwards;
     }
 
-    &.fade-out {
-        animation: fadeOut 0.2s forwards;
-    }
-
     @keyframes fadeIn {
         0% {
             opacity: 0;
         }
         100% {
             opacity: 1;
-        }
-    }
-
-    @keyframes fadeOut {
-        0% {
-            opacity: 1;
-        }
-
-        100% {
-            opacity: 0;
         }
     }
 `;
