@@ -1,0 +1,236 @@
+{
+  "motos": [
+    {
+      "id": "1",
+      "code": "12345",
+      "name": "Honda CB 500",
+      "color": "ROSA",
+      "price": "35.000,00",
+      "status": "Sem estoque"
+    },
+    {
+      "id": "2",
+      "code": "46742",
+      "name": "YAMAHA MT5",
+      "price": "15.000,00",
+      "color": "AZUL",
+      "status": "Em trânsito"
+    },
+    {
+      "id": "3",
+      "code": "0001",
+      "name": "HONDA POP 1101",
+      "price": "15.000,00",
+      "color": "BRANCA",
+      "status": "Em estoque"
+    },
+    {
+      "id": "4",
+      "code": "0002",
+      "name": "HONDA 500x",
+      "price": "50.000,00",
+      "color": "VERMELHA",
+      "status": "Sem estoque"
+    },
+    {
+      "id": "5",
+      "code": "0003",
+      "name": "HONDA CB 300F TWISTER",
+      "price": "30.000,00",
+      "color": "PRETA",
+      "status": "Em trânsito"
+    },
+    {
+      "id": "3180",
+      "code": "0213",
+      "name": "MOTO 3X BIKE LAMBRETA",
+      "color": "PRETA",
+      "price": "13.400,00",
+      "status": "Em estoque"
+    },
+    {
+      "id": "8b9f",
+      "code": "1345",
+      "name": "MAGNUM MOTO",
+      "color": "BRANCA",
+      "price": "44.552,00",
+      "status": "Sem estoque"
+    },
+    {
+      "id": "3dc6",
+      "code": "1231",
+      "name": "MOTOCA MOTOS",
+      "color": "VERMELHA",
+      "price": "100.000,20",
+      "status": "Em estoque"
+    },
+    {
+      "id": "f93f",
+      "code": "4584",
+      "name": "YAMAHATA TEST",
+      "color": "DOURADO",
+      "price": "155.555,00",
+      "status": "Em trânsito"
+    },
+    {
+      "id": "c27a",
+      "code": "12312",
+      "name": "MOTOCA BROS",
+      "color": "VERDE",
+      "price": "4.567,22",
+      "status": "Sem estoque"
+    },
+    {
+      "id": "f71d",
+      "code": "4684",
+      "name": "MODELO TEST",
+      "color": "CIANO",
+      "price": "444.652,00",
+      "status": "Em estoque"
+    },
+    {
+      "id": "e7d6",
+      "code": "4684",
+      "name": "MOTOCROS X2",
+      "color": "VERDE",
+      "price": "798.754,44",
+      "status": "Sem estoque"
+    },
+    {
+      "id": "0d92",
+      "code": "9999",
+      "name": "ULTIMATE TEST X9",
+      "color": "DORUADA",
+      "price": "65.125,00",
+      "status": "Em trânsito"
+    },
+    {
+      "id": "8395",
+      "code": "45124",
+      "name": "ULTIMATE TEST X10",
+      "color": "DOURADO",
+      "price": "9.900,15",
+      "status": "Em trânsito"
+    },
+    {
+      "id": "0fa9",
+      "code": "3459",
+      "name": "MOTOCROSS X21",
+      "color": "ROSA",
+      "price": "45.642,00",
+      "status": "Em trânsito"
+    },
+    {
+      "id": "4cb7",
+      "code": "2198",
+      "name": "ULTIMA TESTE X3912",
+      "color": "DOURADA",
+      "price": "9.999,45",
+      "status": "Sem estoque"
+    },
+    {
+      "id": "bf37",
+      "code": "3000",
+      "name": "HONDA POP 1002",
+      "color": "LILÁS",
+      "price": "44.444,00",
+      "status": "Em trânsito"
+    },
+    {
+      "id": "117c",
+      "code": "3001",
+      "name": "MOTOERROR TEST X2",
+      "color": "BRANCA",
+      "price": "88.888,00",
+      "status": "Em trânsito"
+    },
+    {
+      "id": "9578",
+      "code": "3005",
+      "name": "TESTMOTO ERROR 30X",
+      "color": "LILAS",
+      "price": "77.777,00",
+      "status": "Em trânsito"
+    },
+    {
+      "id": "7abe",
+      "code": "3003",
+      "name": "TESTEMT X2",
+      "color": "VERDE",
+      "price": "22.222,00",
+      "status": "Sem estoque"
+    },
+    {
+      "id": "b075",
+      "code": "3004",
+      "name": "DOURADOTESTULTIMA X2",
+      "color": "PRATA",
+      "price": "465.421,00",
+      "status": "Sem estoque"
+    },
+    {
+      "id": "2d68",
+      "code": "36189",
+      "name": "TESTE2 3X",
+      "color": "VERDE",
+      "price": "65.451,00",
+      "status": "Em estoque"
+    },
+    {
+      "id": "1b81",
+      "code": "1314",
+      "name": "MOST TRY 2X",
+      "color": "VERDE",
+      "price": "1.231.212,00",
+      "status": "Sem estoque"
+    },
+    {
+      "id": "d710",
+      "code": "45621",
+      "name": "TEST3",
+      "color": "LILAS",
+      "price": "91.212,23",
+      "status": "Em trânsito"
+    },
+    {
+      "id": "a139",
+      "code": "1233",
+      "name": "ASDA TEST ",
+      "color": "DOURADO",
+      "price": "12.031,23",
+      "status": "Em trânsito"
+    },
+    {
+      "id": "e3d3",
+      "code": "9754",
+      "name": "TESTMODAL 2X",
+      "color": "VERDE",
+      "price": "12.312,00",
+      "status": "Em estoque"
+    },
+    {
+      "id": "6f19",
+      "code": "9451",
+      "name": "THE LAST TAST X3",
+      "color": "VERDE",
+      "price": "875.442,00",
+      "status": "Em trânsito"
+    },
+    {
+      "id": "32f4",
+      "code": "12451",
+      "name": "TEST X3",
+      "color": "AZUL",
+      "price": "43.101,00",
+      "status": "Em estoque"
+    },
+    {
+      "id": "2c63",
+      "code": "57645",
+      "name": "JACK MOTO2X",
+      "color": "DOURADO",
+      "price": "7.151,31",
+      "status": "Sem estoque"
+    }
+  ]
+}
