@@ -18,7 +18,6 @@ export default function Card({ id, code, name, price, color, status }) {
     //Delay pra ver o loading
     const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
-
     //Handle
     const handleDelete = async () => {
         if (status === "Em estoque") {
@@ -44,7 +43,6 @@ export default function Card({ id, code, name, price, color, status }) {
     };
 
     //Componente
-
     return (
         <>
             {!deleted && (
