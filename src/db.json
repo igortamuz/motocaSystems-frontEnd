@@ -78,7 +78,7 @@
       "name": "RUBY MOTO",
       "color": "VERMELHO",
       "price": "39.100,00",
-      "status": "Em estoque"
+      "status": "Sem estoque"
     },
     {
       "id": "k7l8",
@@ -102,7 +102,7 @@
       "name": "SAPPHIRE MOTO",
       "color": "AZUL",
       "price": "46.900,00",
-      "status": "Em estoque"
+      "status": "Sem estoque"
     },
     {
       "id": "q3r4",
@@ -118,7 +118,7 @@
       "name": "COPPER MOTO",
       "color": "DOURADO",
       "price": "53.300,00",
-      "status": "Em estoque"
+      "status": "Sem estoque"
     },
     {
       "id": "w9x0",
@@ -134,7 +134,7 @@
       "name": "OCEAN MOTO",
       "color": "AZUL",
       "price": "56.800,00",
-      "status": "Em estoque"
+      "status": "Sem estoque"
     },
     {
       "id": "c5d6",
