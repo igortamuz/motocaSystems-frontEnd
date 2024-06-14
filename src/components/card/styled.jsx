@@ -1,4 +1,23 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
+
+const spin = keyframes`
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+`;
+
+const Spinner = styled.div`
+    border: 4px solid rgba(255, 255, 255, 0.3);
+    border-top: 4px solid #ff4c51;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    margin-right: 20px;
+    animation: ${spin} 1s linear infinite;
+`;
 
 const ItemCardContainer = styled.div`
     background-color: #312D4B;
@@ -174,4 +193,4 @@ const FloatingMessage = styled.div`
   }
 `;
 
-export { ItemCardContainer, ItemInfo, ItemId, ItemInfoPart2, StatusBadge, ItemActions, TrashButton, EyeButton, ItemName, ItemColor, ItemValue, ItemNameNBadgeDiv, FloatingMessage };
+export {Spinner, ItemCardContainer, ItemInfo, ItemId, ItemInfoPart2, StatusBadge, ItemActions, TrashButton, EyeButton, ItemName, ItemColor, ItemValue, ItemNameNBadgeDiv, FloatingMessage };
