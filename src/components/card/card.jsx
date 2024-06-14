@@ -4,7 +4,6 @@ import { ItemCardContainer, ItemInfo, ItemId, ItemInfoPart2, StatusBadge, ItemAc
 import trashIcon from './../../assets/buttons/Trash.png';
 import eyeIcon from './../../assets/buttons/Eye.png';
 import { Link } from 'react-router-dom';
-import styled from 'styled-components';
 
 export default function Card({ id, code, name, price, color, status }) {
 

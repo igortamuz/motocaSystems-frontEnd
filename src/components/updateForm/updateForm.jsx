@@ -73,6 +73,8 @@ export default function UpdateForm({ id, code, name, price, color, status }) {
             selectedOption: ''
         };
 
+        //Erros
+
         if (codigo.length > 6 || codigo.length < 4 || !/^\d+$/.test(codigo)) {
             newErrors.codigo = 'Mínimo de 4 e máximo de 6 números!';
             valid = false;

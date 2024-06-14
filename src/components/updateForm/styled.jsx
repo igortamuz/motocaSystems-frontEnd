@@ -7,6 +7,17 @@ const FormContainer = styled.div`
     justify-content: center;
     align-items: center; 
     font-weight: 600;
+    opacity: 0;
+    animation: fadeIn 1s forwards;
+
+    @keyframes fadeIn {
+        0% {
+            opacity: 0;
+        }
+        100% {
+            opacity: 1;
+        }
+    }
 `;
 
 const FormBody = styled.div`

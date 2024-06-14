@@ -11,15 +11,14 @@ const ItemCardContainer = styled.div`
     align-items: center;
     height: 138px;
     width: 1408px;
-    animation-duration: 1.5s;
     animation-fill-mode: forwards;
 
     &.fade-in {
-        animation-name: fadeIn;
+        animation: fadeIn 1.5s forwards;
     }
 
     &.fade-out {
-        animation-name: fadeOut;
+        animation: fadeOut 3s forwards;
     }
 
     @keyframes fadeIn {
@@ -35,6 +34,7 @@ const ItemCardContainer = styled.div`
         0% {
             opacity: 1;
         }
+
         100% {
             opacity: 0;
         }

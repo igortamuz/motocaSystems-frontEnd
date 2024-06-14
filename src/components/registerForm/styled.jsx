@@ -1,12 +1,24 @@
 import styled from "styled-components";
 import Seta from "../../assets/input/Seta.png";
 
+
 const FormContainer = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center; 
     font-weight: 600;
+    opacity: 0;
+    animation: fadeIn 1s forwards;
+
+    @keyframes fadeIn {
+        0% {
+            opacity: 0;
+        }
+        100% {
+            opacity: 1;
+        }
+    }
 `;
 
 const FormBody = styled.div`
