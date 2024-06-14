@@ -1,16 +1,44 @@
 import styled from 'styled-components';
 
 const ItemCardContainer = styled.div`
-  background-color: #312D4B;
-  color: #E7E3FC;
-  border-radius: 10px;
-  padding: 16px;
-  margin-top: 25px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  height: 138px;
-  width: 1408px;
+    background-color: #312D4B;
+    color: #E7E3FC;
+    border-radius: 10px;
+    padding: 16px;
+    margin-top: 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 138px;
+    width: 1408px;
+    animation-duration: 1.5s;
+    animation-fill-mode: forwards;
+
+    &.fade-in {
+        animation-name: fadeIn;
+    }
+
+    &.fade-out {
+        animation-name: fadeOut;
+    }
+
+    @keyframes fadeIn {
+        0% {
+            opacity: 0;
+        }
+        100% {
+            opacity: 1;
+        }
+    }
+
+    @keyframes fadeOut {
+        0% {
+            opacity: 1;
+        }
+        100% {
+            opacity: 0;
+        }
+    }
 `;
 
 const ItemInfo = styled.div`
@@ -55,7 +83,7 @@ const StatusBadge = styled.span`
     if (status === 'Sem estoque') return '#ff4c51';
     if (status === 'Em estoque') return '#56ca00';
     if (status === 'Em trânsito') return '#FFB400';
-;
+    ;
   }};
   padding: 3px 10px;
   border-radius: 35px;
@@ -98,10 +126,65 @@ const ItemActions = styled.div`
 
 const TrashButton = styled.div`
   margin-right: 20px;
+  cursor: pointer;
 `
 
 const EyeButton = styled.div`
   margin-right: 53.36px;
+  cursor: pointer;
 `;
 
-export { ItemCardContainer, ItemInfo, ItemId, ItemInfoPart2, StatusBadge, ItemActions, TrashButton, EyeButton, ItemName, ItemColor, ItemValue, ItemNameNBadgeDiv };
+const FloatingMessage = styled.div`
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  padding: 10px 20px;
+  background-color: ${props => {
+    switch (props.type) {
+      case "success":
+        return "#4CAF50";
+      case "warning":
+        return "#c5b62a";
+      case "error":
+        return "#F44336";
+      default:
+        return "#F44336";
+    }
+  }};  
+  color: white;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  opacity: 0;
+  animation: fadeInOut 1.5s forwards;
+
+  @keyframes fadeInOut {
+    0% {
+      opacity: 0;
+    }
+    20% {
+      opacity: 1;
+    }
+    80% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+
+  &.fade-out {
+    animation: fadeOut 1.5s forwards;
+  }
+
+  @keyframes fadeOut {
+    0% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+`;
+
+export { ItemCardContainer, ItemInfo, ItemId, ItemInfoPart2, StatusBadge, ItemActions, TrashButton, EyeButton, ItemName, ItemColor, ItemValue, ItemNameNBadgeDiv, FloatingMessage };

@@ -4,7 +4,12 @@ import Card from "../../components/card/card";
 import { CenteredContainer } from "./styled";
 
 export default function MotoTable() {
+
+  //States
+
   const [motos, setMotos] = useState([]);
+
+  //Get da Api/Json Server
 
   useEffect(() => {
     fetch('http://localhost:3001/motos')
@@ -13,12 +18,14 @@ export default function MotoTable() {
       .catch(error => console.error('Error fetching motos:', error));
   }, []);
 
+  //Componente
+
   return (
     <CenteredContainer>
       <PageTitle title="Tabela de Motos" />
       {motos.map(moto => (
         <Card
-          key={moto.id}
+          id={moto.id}
           code={moto.code}
           name={moto.name} 
           price={moto.price} 

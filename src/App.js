@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import MotoTable from "./pages/motoTable/motoTable";
 import Header from "./components/header/header";
 import MotoRegistration from "./pages/motoRegistration/motoRegistration";
+import MotoEdit from "./pages/motoEdit/motoEdit";
 
 //  //json-server --watch src/db.json --port 3001
 
@@ -17,12 +18,15 @@ function App() {
           <Routes>
             <Route path="/" element={<MotoTable />} />
             <Route path="/registro" element={<MotoRegistration />} />
+            <Route path="/editar/:id" element={<MotoEdit />} />
           </Routes>
         </CenterContainer>
       </AppContainer>
     </Router>
   );
 }
+
+//Styled Component --- Preferi, neste caso, deixar nesta aba pois mudar a posição do APP.js pode gerar complicações e prezando pela organização e acesso ao código, o mantive junto do styled!
 
 const AppContainer = styled.div`
   display: flex;
@@ -55,8 +59,8 @@ const GlobalStyle = createGlobalStyle`
 
 const CenterContainer = styled.div`
   width: 75%;
-  margin: 0 auto; 
-  padding: 20px; 
+  margin: 0 auto;
+  padding: 20px;
 `;
 
 export default App;

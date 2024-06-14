@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import axios from "axios";
-import FormTitle from "../../components/formTitle/formTitle";
+import FormTitle from "../formTitle/formTitle";
 import {
     FormContainer,
     InputCode,
@@ -20,17 +20,16 @@ import {
     DropdownErrorMessage,
     FloatingMessage
 } from "./styled";
-import Plus from "../../assets/input/Plus.png";
+import SetaUp from "../../assets/input/SetaUp.png";
 
-export default function RegisterForm() {
-
-    //States
-
-    const [codigo, setCodigo] = useState("");
-    const [modelo, setModelo] = useState("");
-    const [cor, setCor] = useState("");
-    const [valor, setValor] = useState("");
-    const [selectedOption, setSelectedOption] = useState("");
+export default function UpdateForm({ id, code, name, price, color, status }) {
+    
+    // States
+    const [codigo, setCodigo] = useState(code || "");
+    const [modelo, setModelo] = useState(name || "");
+    const [cor, setCor] = useState(color || "");
+    const [valor, setValor] = useState(price || "");
+    const [selectedOption, setSelectedOption] = useState(status || "");
     const [isOpen, setIsOpen] = useState(false);
     const [errors, setErrors] = useState({
         codigo: '',
@@ -44,6 +43,7 @@ export default function RegisterForm() {
     const options = ["Sem estoque", "Em trânsito", "Em estoque"];
     const dropdownRef = useRef(null);
 
+    // useEffect
     useEffect(() => {
         function handleClickOutside(event) {
             if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
@@ -62,8 +62,7 @@ export default function RegisterForm() {
         };
     }, [isOpen]);
 
-    //Inputs
-
+    // Inputs
     const validateInputs = () => {
         let valid = true;
         const newErrors = {
@@ -73,8 +72,6 @@ export default function RegisterForm() {
             valor: '',
             selectedOption: ''
         };
-
-        //Erros
 
         if (codigo.length > 6 || codigo.length < 4 || !/^\d+$/.test(codigo)) {
             newErrors.codigo = 'Mínimo de 4 e máximo de 6 números!';
@@ -105,6 +102,7 @@ export default function RegisterForm() {
         return valid;
     };
 
+    // Handles
     const handleSubmit = async (e) => {
         e.preventDefault();
 
@@ -113,21 +111,27 @@ export default function RegisterForm() {
         }
 
         try {
+            const existingMoto = await axios.get(`http://localhost:3001/motos/${id}`);
+            const existingMotoData = existingMoto.data;
 
-            //Verificação de uso de código
+            if (
+                existingMotoData.code === codigo &&
+                existingMotoData.name === modelo &&
+                existingMotoData.color === cor &&
+                existingMotoData.price === valor &&
+                existingMotoData.status === selectedOption
+            ) {
 
-            const existingMoto = await axios.get(`http://localhost:3001/motos?code=${codigo}`);
-            if (existingMoto.data.length > 0) {
-                setErrors({ ...errors, codigo: 'Este código já está em uso. Por favor, escolha outro.' });
+
+                setFloatingMessage({ visible: true, message: "Não é necessário fazer o update, pois está idêntico.", type: "warning" });
+                setTimeout(() => {
+                    setFloatingMessage(prevFloatingMessage => ({ ...prevFloatingMessage, visible: false }));
+                }, 4000);
                 return;
-            } else {
-                setErrors({ ...errors, codigo: '' });
             }
 
             let formattedValue = valor.replace(/[^\d,]/g, '');
             const decimalSeparatorIndex = formattedValue.indexOf(',');
-
-            //Verificação de milhar!
 
             if (decimalSeparatorIndex !== -1 && decimalSeparatorIndex !== formattedValue.length - 1) {
                 const integerPart = formattedValue.substring(0, decimalSeparatorIndex);
@@ -138,7 +142,7 @@ export default function RegisterForm() {
                 formattedValue = formattedValue.replace(/\B(?=(\d{3})+(?!\d))/g, '.');
             }
 
-            const newMoto = {
+            const updatedMoto = {
                 code: codigo,
                 name: modelo,
                 color: cor,
@@ -146,81 +150,59 @@ export default function RegisterForm() {
                 status: selectedOption
             };
 
-            //Post do axios
+            await axios.put(`http://localhost:3001/motos/${id}`, updatedMoto);
 
-            await axios.post("http://localhost:3001/motos", newMoto);
-            setCodigo("");
-            setModelo("");
-            setCor("");
-            setValor("");
-            setSelectedOption("");
-            setIsOpen(false);
-            setErrors({
-                codigo: '',
-                modelo: '',
-                cor: '',
-                valor: '',
-                selectedOption: ''
-            });
-
-            //Mensagem de sucesso
-
-            setFloatingMessage({ visible: true, message: "O Modelo da Moto foi Registrado com sucesso!", type: "success" });
+            setFloatingMessage({ visible: true, message: "O Modelo da Moto foi atualizado com sucesso!", type: "success" });
         } catch (error) {
-            console.error("Error when creating the moto:", error);
-
-            // Mensagem de erro
-
-            setFloatingMessage({ visible: true, message: "Houve erro ao registrar o modelo da moto!", type: "error" });
+            console.error("Error when updating the moto:", error);
+            setFloatingMessage({ visible: true, message: "Houve erro ao atualizar o modelo da moto!", type: "error" });
         }
 
-        //Esconder a mensagem em 4 segundos
-
         setTimeout(() => {
-            setFloatingMessage({ ...floatingMessage, visible: false });
+            setFloatingMessage(prevFloatingMessage => ({ ...prevFloatingMessage, visible: false }));
         }, 4000);
     };
 
     //Handles
+
+    const handleCodigoChange = (value) => {
+        setCodigo(value);
+        if (errors.codigo) {
+            setErrors(prevErrors => ({ ...prevErrors, codigo: '' }));
+        }
+    };
 
     const handleItemClick = (option) => {
         setSelectedOption(option);
         setIsOpen(false);
     };
 
-    const handleCodigoChange = (value) => {
-        setCodigo(value);
-        if (errors.codigo) {
-            setErrors({ ...errors, codigo: '' });
-        }
-    };
-
     const handleModeloChange = (value) => {
         setModelo(value);
         if (errors.modelo) {
-            setErrors({ ...errors, modelo: '' });
+            setErrors(prevErrors => ({ ...prevErrors, modelo: '' }));
         }
     };
 
     const handleCorChange = (value) => {
         setCor(value);
         if (errors.cor) {
-            setErrors({ ...errors, cor: '' });
+            setErrors(prevErrors => ({ ...prevErrors, cor: '' }));
         }
     };
 
     const handleValorChange = (value) => {
         setValor(value);
         if (errors.valor) {
-            setErrors({ ...errors, valor: '' });
+            setErrors(prevErrors => ({ ...prevErrors, valor: '' }));
         }
     };
 
-    //Componente
+    // Componente
 
     return (
         <>
-            <FormTitle title={"Preencha as informações abaixo para registrar uma Moto 🏍️"} />
+            <FormTitle title={"Edite as informações que preferir! 📝"} />
             <FormContainer>
                 <FormBody>
                     <Wrapper>
@@ -263,8 +245,8 @@ export default function RegisterForm() {
                 </FormBody>
 
                 <ButtonContainer onClick={handleSubmit}>
-                    <ButtonImage src={Plus} alt="Plus icon" />
-                    {"REGISTRAR"}
+                    <ButtonImage src={SetaUp} alt="SetaUp icon" />
+                    {"ATUALIZAR"}
                 </ButtonContainer>
             </FormContainer>
 

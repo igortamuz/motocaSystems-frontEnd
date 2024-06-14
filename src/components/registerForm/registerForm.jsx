@@ -44,6 +44,8 @@ export default function RegisterForm() {
     const options = ["Sem estoque", "Em trânsito", "Em estoque"];
     const dropdownRef = useRef(null);
 
+    //UseEffect
+
     useEffect(() => {
         function handleClickOutside(event) {
             if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
@@ -104,6 +106,8 @@ export default function RegisterForm() {
         setErrors(newErrors);
         return valid;
     };
+
+     //Handles
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -180,8 +184,6 @@ export default function RegisterForm() {
             setFloatingMessage({ ...floatingMessage, visible: false });
         }, 4000);
     };
-
-    //Handles
 
     const handleItemClick = (option) => {
         setSelectedOption(option);

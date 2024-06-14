@@ -1,92 +1,20 @@
 {
   "motos": [
     {
-      "id": "1",
-      "code": "12345",
-      "name": "Honda CB 500",
-      "color": "ROSA",
-      "price": "35.000,00",
-      "status": "Sem estoque"
-    },
-    {
-      "id": "2",
-      "code": "46742",
-      "name": "YAMAHA MT5",
-      "price": "15.000,00",
-      "color": "AZUL",
-      "status": "Em trânsito"
-    },
-    {
-      "id": "3",
       "code": "0001",
       "name": "HONDA POP 1101",
+      "color": "BRANCA",
       "price": "15.000,00",
-      "color": "BRANCA",
-      "status": "Em estoque"
+      "status": "Em trânsito",
+      "id": "3"
     },
     {
-      "id": "4",
-      "code": "0002",
-      "name": "HONDA 500x",
-      "price": "50.000,00",
-      "color": "VERMELHA",
-      "status": "Sem estoque"
-    },
-    {
-      "id": "5",
-      "code": "0003",
-      "name": "HONDA CB 300F TWISTER",
-      "price": "30.000,00",
-      "color": "PRETA",
-      "status": "Em trânsito"
-    },
-    {
-      "id": "3180",
-      "code": "0213",
-      "name": "MOTO 3X BIKE LAMBRETA",
-      "color": "PRETA",
-      "price": "13.400,00",
-      "status": "Em estoque"
-    },
-    {
-      "id": "8b9f",
-      "code": "1345",
-      "name": "MAGNUM MOTO",
-      "color": "BRANCA",
-      "price": "44.552,00",
-      "status": "Sem estoque"
-    },
-    {
-      "id": "3dc6",
-      "code": "1231",
-      "name": "MOTOCA MOTOS",
-      "color": "VERMELHA",
-      "price": "100.000,20",
-      "status": "Em estoque"
-    },
-    {
-      "id": "f93f",
-      "code": "4584",
-      "name": "YAMAHATA TEST",
-      "color": "DOURADO",
-      "price": "155.555,00",
-      "status": "Em trânsito"
-    },
-    {
-      "id": "c27a",
-      "code": "12312",
-      "name": "MOTOCA BROS",
-      "color": "VERDE",
-      "price": "4.567,22",
-      "status": "Sem estoque"
-    },
-    {
-      "id": "f71d",
       "code": "4684",
       "name": "MODELO TEST",
       "color": "CIANO",
       "price": "444.652,00",
-      "status": "Em estoque"
+      "status": "Sem estoque",
+      "id": "f71d"
     },
     {
       "id": "e7d6",
