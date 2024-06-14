@@ -74,7 +74,6 @@ export default function UpdateForm({ id, code, name, price, color, status }) {
         };
 
         //Erros
-
         if (codigo.length > 6 || codigo.length < 4 || !/^\d+$/.test(codigo)) {
             newErrors.codigo = 'Mínimo de 4 e máximo de 6 números!';
             valid = false;
@@ -165,8 +164,6 @@ export default function UpdateForm({ id, code, name, price, color, status }) {
         }, 4000);
     };
 
-    //Handles
-
     const handleCodigoChange = (value) => {
         setCodigo(value);
         if (errors.codigo) {
@@ -201,7 +198,6 @@ export default function UpdateForm({ id, code, name, price, color, status }) {
     };
 
     // Componente
-
     return (
         <>
             <FormTitle title={"Edite as informações que preferir! 📝"} />

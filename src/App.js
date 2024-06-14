@@ -5,13 +5,12 @@ import Header from "./components/header/header";
 import MotoRegistration from "./pages/motoRegistration/motoRegistration";
 import MotoEdit from "./pages/motoEdit/motoEdit";
 
-//  //json-server --watch src/db.json --port 3001
+//json-server --watch src/db.json --port 3001
 
 function App() {
   return (
     <Router>
       <AppContainer className="App">
-        <GlobalFontStyle />
         <GlobalStyle />
         <CenterContainer>
           <Header />
@@ -26,18 +25,11 @@ function App() {
   );
 }
 
-//Styled Component --- Preferi, neste caso, deixar nesta aba pois mudar a posição do APP.js pode gerar complicações e prezando pela organização e acesso ao código, o mantive junto do styled!
-
+//Styled Component
 const AppContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-`;
-
-const GlobalFontStyle = createGlobalStyle`
-  body {
-    font-family: 'Poppins'; 
-  }
 `;
 
 const GlobalStyle = createGlobalStyle`
@@ -54,6 +46,10 @@ const GlobalStyle = createGlobalStyle`
     -moz-osx-font-smoothing: grayscale;
     background-color: #2A233C;
     color: #E7E3FC;
+  }
+
+  body {
+    font-family: 'Poppins'; 
   }
 `;
 

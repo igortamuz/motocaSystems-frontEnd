@@ -5,16 +5,12 @@ import UpdateForm from "../../components/updateForm/updateForm";
 import { CenteredContainer } from "./styled";
 
 export default function MotoEdit() {
-
     //id pelo parametro e states
-
     const { id } = useParams();
     const [moto, setMoto] = useState(null);
 
     useEffect(() => {
-
         // Pegar code pelo id
-
         fetch(`http://localhost:3001/motos/${id}`)
             .then((response) => response.json())
             .then((data) => setMoto(data))
@@ -28,7 +24,6 @@ export default function MotoEdit() {
     }
 
     //Componente
-
     return (
         <CenteredContainer>
             <PageTitle title="Editar" />

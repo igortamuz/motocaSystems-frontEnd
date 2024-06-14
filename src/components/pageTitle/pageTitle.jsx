@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom'; 
+import { Link } from 'react-router-dom';
 import {
   Container,
   TitleContainer,
@@ -16,7 +16,13 @@ import {
 import Search from "../../assets/input/Search.png"
 import Plus from "../../assets/input/Plus.png"
 
-export default function PageTitle({ title }) {
+export default function PageTitle({ title, searchTerm, setSearchTerm }) {
+  // Função para mudança da busca
+  const handleSearchChange = (event) => {
+    setSearchTerm(event.target.value);
+  };
+
+  //Componente 1
   if (title === "Tabela de Motos") {
     return (
       <Container>
@@ -27,7 +33,8 @@ export default function PageTitle({ title }) {
           <SecondZone>
             <InputContainer>
               <InputImage src={Search} alt="search icon" />
-              <StyledInput placeholder="Buscar por código, nome e cor" />
+              {/* Configuração do campo de busca para atualizar searchTerm */}
+              <StyledInput placeholder="Buscar por código, nome e cor" value={searchTerm} onChange={handleSearchChange} />
             </InputContainer>
             <Link to="/registro" style={{ textDecoration: 'none' }}>
               <ButtonContainer>
@@ -42,6 +49,7 @@ export default function PageTitle({ title }) {
     );
   }
 
+  //Componente 2
   return (
     <Container>
       <TitleContainer>

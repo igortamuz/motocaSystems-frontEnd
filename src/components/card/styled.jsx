@@ -54,6 +54,7 @@ const ItemId = styled.h2`
   font-weight: 500;
   margin-left: 56px;
   font-style: normal;
+  width: 50px;
   `;
 
 const ItemInfoPart2 = styled.div`

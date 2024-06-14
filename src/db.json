@@ -31,6 +31,22 @@
       "color": "DOURADO",
       "price": "46.512,00",
       "status": "Em trânsito"
+    },
+    {
+      "id": "38eb",
+      "code": "4612",
+      "name": "VERMELHOTO",
+      "color": "AZUL",
+      "price": "987.454,00",
+      "status": "Em trânsito"
+    },
+    {
+      "id": "df94",
+      "code": "874516",
+      "name": "AZULMOTO",
+      "color": "VERMELHO",
+      "price": "879.451,00",
+      "status": "Sem estoque"
     }
   ]
 }

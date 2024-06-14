@@ -25,7 +25,6 @@ import Plus from "../../assets/input/Plus.png";
 export default function RegisterForm() {
 
     //States
-
     const [codigo, setCodigo] = useState("");
     const [modelo, setModelo] = useState("");
     const [cor, setCor] = useState("");
@@ -45,7 +44,6 @@ export default function RegisterForm() {
     const dropdownRef = useRef(null);
 
     //UseEffect
-
     useEffect(() => {
         function handleClickOutside(event) {
             if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
@@ -65,7 +63,6 @@ export default function RegisterForm() {
     }, [isOpen]);
 
     //Inputs
-
     const validateInputs = () => {
         let valid = true;
         const newErrors = {
@@ -107,8 +104,7 @@ export default function RegisterForm() {
         return valid;
     };
 
-     //Handles
-
+    //Handles
     const handleSubmit = async (e) => {
         e.preventDefault();
 
@@ -219,7 +215,6 @@ export default function RegisterForm() {
     };
 
     //Componente
-
     return (
         <>
             <FormTitle title={"Preencha as informações abaixo para registrar uma Moto 🏍️"} />
