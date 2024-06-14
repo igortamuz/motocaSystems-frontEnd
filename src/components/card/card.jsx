@@ -9,7 +9,11 @@ export default function Card({ id, code, name, price, color, status }) {
     //States
     const [floatingMessage, setFloatingMessage] = useState({ visible: false, message: '', type: '' });
     const [deleted, setDeleted] = useState(false);
-    const [loading, setLoading] = useState(false); 
+    const [loading, setLoading] = useState(false);
+
+    ///Uppercasae para padronização
+    const nameUpper = name.toUpperCase();
+    const colorUpper = color.toUpperCase();
 
     //Delay pra ver o loading
     const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
@@ -21,24 +25,25 @@ export default function Card({ id, code, name, price, color, status }) {
             setFloatingMessage({ visible: true, message: "Você não pode excluir um item em estoque!", type: "warning" });
             return;
         }
-    
+
         try {
-            setLoading(true); 
+            setLoading(true);
             await axios.delete(`http://localhost:3001/motos/${id}`);
-            await delay(1000); 
+            await delay(1000);
             setFloatingMessage({ visible: true, message: "Item excluído com sucesso!", type: "success" });
             setDeleted(true);
             setTimeout(() => {
-                setLoading(false); 
+                setLoading(false);
                 console.log("Item excluído com sucesso!");
-            }, 1000); 
+            }, 1000);
         } catch (error) {
             setFloatingMessage({ visible: true, message: "Erro ao excluir o item!", type: "error" });
             console.error("Erro ao excluir o item:", error);
-            setLoading(false); 
+            setLoading(false);
         }
     };
-    
+
+    //Componente
 
     return (
         <>
@@ -48,11 +53,11 @@ export default function Card({ id, code, name, price, color, status }) {
                         <ItemId>#{code}</ItemId>
                         <ItemInfoPart2>
                             <ItemNameNBadgeDiv>
-                                <ItemName>{name}</ItemName>
+                                <ItemName>{nameUpper}</ItemName>
                                 <StatusBadge status={status}>{status}</StatusBadge>
                             </ItemNameNBadgeDiv>
                             <ItemValue>Valor: R$ {price}</ItemValue>
-                            <ItemColor>Cor: {color}</ItemColor>
+                            <ItemColor>Cor: {colorUpper}</ItemColor>
                         </ItemInfoPart2>
                     </ItemInfo>
                     <ItemActions>
