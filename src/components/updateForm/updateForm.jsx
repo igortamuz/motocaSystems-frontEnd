@@ -153,10 +153,10 @@ export default function UpdateForm({ id, code, name, price, color, status }) {
 
             await axios.put(`http://localhost:3001/motos/${id}`, updatedMoto);
 
-            setFloatingMessage({ visible: true, message: "O Modelo da Moto foi atualizado com sucesso!", type: "success" });
+            setFloatingMessage({ visible: true, message: "O registro da moto foi atualizado com sucesso!", type: "success" });
         } catch (error) {
             console.error("Error when updating the moto:", error);
-            setFloatingMessage({ visible: true, message: "Houve erro ao atualizar o modelo da moto!", type: "error" });
+            setFloatingMessage({ visible: true, message: "Houve erro ao atualizar o registro da moto!", type: "error" });
         }
 
         setTimeout(() => {

@@ -165,13 +165,13 @@ export default function RegisterForm() {
 
             //Mensagem de sucesso
 
-            setFloatingMessage({ visible: true, message: "O Modelo da Moto foi Registrado com sucesso!", type: "success" });
+            setFloatingMessage({ visible: true, message: "A Moto foi RegistradA com sucesso!", type: "success" });
         } catch (error) {
             console.error("Error when creating the moto:", error);
 
             // Mensagem de erro
 
-            setFloatingMessage({ visible: true, message: "Houve erro ao registrar o modelo da moto!", type: "error" });
+            setFloatingMessage({ visible: true, message: "Houve erro ao registrar a moto!", type: "error" });
         }
 
         //Esconder a mensagem em 4 segundos
