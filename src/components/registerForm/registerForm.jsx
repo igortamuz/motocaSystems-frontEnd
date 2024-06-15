@@ -19,7 +19,8 @@ import {
     ErrorMessage,
     DropdownErrorMessage,
     FloatingMessage,
-    Spinner
+    Spinner,
+    StyledLinkButton
 } from "./styled";
 import Plus from "../../assets/input/Plus.png";
 
@@ -42,7 +43,7 @@ export default function RegisterForm() {
         message: "",
         type: ""
     });
-    const [loading, setLoading] = useState(false); // Estado para controlar o spinner
+    const [loading, setLoading] = useState(false);
     const options = ["Sem estoque", "Em trânsito", "Em estoque"];
     const dropdownRef = useRef(null);
 
@@ -110,13 +111,12 @@ export default function RegisterForm() {
             return;
         }
 
-        setLoading(true); // Ativa o spinner quando o botão é clicado
-
+        setLoading(true);
         try {
             const existingMoto = await axios.get(`http://localhost:3001/motos?code=${codigo}`);
             if (existingMoto.data.length > 0) {
                 setErrors({ ...errors, codigo: "Este código já está em uso. Por favor, escolha outro." });
-                setLoading(false); // Desativa o spinner em caso de erro
+                setLoading(false);
                 return;
             } else {
                 setErrors({ ...errors, codigo: "" });
@@ -251,6 +251,13 @@ export default function RegisterForm() {
                     {loading ? <Spinner /> : <ButtonImage src={Plus} alt="Plus icon" />}
                     {"REGISTRAR"}
                 </ButtonContainer>
+
+                <StyledLinkButton to={`/`}>
+                    <ButtonContainer>
+                        {"RETORNAR A TABELA"}
+                    </ButtonContainer>
+                </StyledLinkButton>
+
             </FormContainer>
 
             {floatingMessage.visible && (

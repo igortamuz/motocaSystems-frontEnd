@@ -20,7 +20,7 @@ export default function MotoEdit() {
     }, [id]);
 
     if (!moto) {
-        return <div>Não foram encontrado motos...</div>;
+        return <div style={{ marginLeft: '60px' }}>Não foram encontradas motos...</div>;
     }
 
     //Componente

@@ -19,7 +19,8 @@ import {
     ErrorMessage,
     DropdownErrorMessage,
     FloatingMessage,
-    Spinner 
+    Spinner,
+    StyledLinkButton
 } from "./styled";
 import SetaUp from "../../assets/input/SetaUp.png";
 
@@ -40,7 +41,7 @@ export default function UpdateForm({ id, code, name, price, color, status }) {
         selectedOption: ''
     });
     const [floatingMessage, setFloatingMessage] = useState({ visible: false, message: '', type: '' });
-    const [isSubmitting, setIsSubmitting] = useState(false); 
+    const [isSubmitting, setIsSubmitting] = useState(false);
 
     const options = ["Sem estoque", "Em trânsito", "Em estoque"];
     const dropdownRef = useRef(null);
@@ -108,7 +109,7 @@ export default function UpdateForm({ id, code, name, price, color, status }) {
             return;
         }
 
-        setIsSubmitting(true); 
+        setIsSubmitting(true);
 
         try {
             //get do axios
@@ -125,7 +126,7 @@ export default function UpdateForm({ id, code, name, price, color, status }) {
                 setFloatingMessage({ visible: true, message: "Não é necessário fazer o update, pois está idêntico.", type: "warning" });
                 setTimeout(() => {
                     setFloatingMessage(prevFloatingMessage => ({ ...prevFloatingMessage, visible: false }));
-                    setIsSubmitting(false); 
+                    setIsSubmitting(false);
                 }, 1150);
                 return;
             }
@@ -160,7 +161,7 @@ export default function UpdateForm({ id, code, name, price, color, status }) {
 
         setTimeout(() => {
             setFloatingMessage(prevFloatingMessage => ({ ...prevFloatingMessage, visible: false }));
-            setIsSubmitting(false); 
+            setIsSubmitting(false);
         }, 1000);
     };
 
@@ -199,7 +200,7 @@ export default function UpdateForm({ id, code, name, price, color, status }) {
                     <Wrapper>
                         <LabelStyled>{"Código"}</LabelStyled>
                         <HashSymbol>#</HashSymbol>
-                        <InputCode value={codigo} readOnly/>
+                        <InputCode value={codigo} readOnly />
                         {errors.codigo && <ErrorMessage>{errors.codigo}</ErrorMessage>}
                     </Wrapper>
                     <Wrapper>
@@ -239,6 +240,13 @@ export default function UpdateForm({ id, code, name, price, color, status }) {
                     {isSubmitting ? <Spinner /> : <ButtonImage src={SetaUp} alt="SetaUp icon" />}
                     {"ATUALIZAR"}
                 </ButtonContainer>
+
+                <StyledLinkButton to={`/`}>
+                    <ButtonContainer>
+                        {"RETORNAR A TABELA"}
+                    </ButtonContainer>
+                </StyledLinkButton>
+
             </FormContainer>
 
             {floatingMessage.visible && (

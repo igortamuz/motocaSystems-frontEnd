@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import Seta from "../../assets/input/Seta.png";
 import styled, { keyframes } from "styled-components";
 
@@ -305,6 +306,10 @@ const Spinner = styled.div`
   margin-right: 5px;
 `;
 
+const StyledLinkButton = styled(Link)`
+  text-decoration: none;
+`;
+
 export {
   FormContainer,
   InputCode,
@@ -324,5 +329,6 @@ export {
   DropdownErrorMessage,
   FloatingMessage,
   LabelStyledCode,
-  Spinner
+  Spinner,
+  StyledLinkButton
 };

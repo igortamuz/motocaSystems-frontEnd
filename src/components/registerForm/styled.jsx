@@ -1,5 +1,6 @@
 import styled, { keyframes } from "styled-components";
 import Seta from "../../assets/input/Seta.png";
+import { Link } from "react-router-dom";
 
 const FormContainer = styled.div`
     display: flex;
@@ -183,6 +184,7 @@ const ButtonContainer = styled.button`
   font-weight: 600;
   margin-top: 35px;
   transition: transform 0.1s ease;
+  text-decoration: none;
 
   @media only screen and (max-width: 850px) {
       width: 100%;
@@ -289,6 +291,10 @@ const FloatingMessage = styled.div`
   }
 `;
 
+const StyledLinkButton = styled(Link)`
+  text-decoration: none;
+`;
+
 export {
   FormContainer,
   InputCode,
@@ -307,5 +313,6 @@ export {
   ErrorMessage,
   DropdownErrorMessage,
   FloatingMessage,
-  Spinner
+  Spinner,
+  StyledLinkButton
 };

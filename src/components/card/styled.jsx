@@ -12,7 +12,7 @@ const ItemCardContainer = styled.div`
     height: 138px;
     width: 1408px;
     animation-fill-mode: forwards;
-
+    
     &.fade-in {
         animation: fadeIn 1.5s forwards;
     }
@@ -41,6 +41,10 @@ const ItemInfo = styled.div`
   align-items: center; 
   gap: 10px; 
   width: 100%;
+
+  @media only screen and (max-width: 420px) {
+    width: 90%;
+  }
 `;
 
 const ItemId = styled.h2`
@@ -56,10 +60,10 @@ const ItemId = styled.h2`
     margin-left: 16px;
   }
 
-  @media only screen and (max-width: 390px) {
-    margin-left: 6px;
+  @media only screen and (max-width: 420px) {
+    margin-left: -10px;
+    padding-left: -20px;
   }
-
   `;
 
 const ItemInfoPart2 = styled.div`
@@ -69,10 +73,10 @@ const ItemInfoPart2 = styled.div`
     width: 7%;
   }
 
-  @media only screen and (max-width: 390px) {
+  @media only screen and (max-width: 420px) {
     width: 5%;
+    padding-right: 5px;
   }
-
 `;
 
 const ItemInfoPart3 = styled.div`
@@ -80,9 +84,15 @@ const ItemInfoPart3 = styled.div`
   flex-direction: column;
   margin-left: 58px;
   width: 50%;
+  padding-right: 5px;
 
   @media only screen and (max-width: 500px) {
     width: 80%;
+  }
+
+  @media only screen and (max-width: 420px) {
+    width: 70%;
+
   }
 
 `;
@@ -95,7 +105,6 @@ const ItemNameNBadgeDiv = styled.div`
   @media only screen and (max-width: 500px) {
     justify-content: space-between;
   }
-
 `
 
 const ItemName = styled.div`
@@ -103,8 +112,7 @@ const ItemName = styled.div`
   font-size: 17px;
 
   @media only screen and (max-width: 500px) {
-    font-size: 15px;
-    background-color: green;
+    font-size: 13px;
     min-width: 120px;
     max-width: 120px;
     overflow: hidden;
@@ -112,9 +120,10 @@ const ItemName = styled.div`
     text-overflow: ellipsis;
   }
 
-  @media only screen and (max-width: 390px) {
-    min-width: 90px;
-    max-width: 90px;
+  @media only screen and (max-width: 420px) {
+    min-width: 100px;
+    max-width: 100px;
+    font: 10px;
   }
 
 `;
@@ -139,10 +148,18 @@ const StatusBadge = styled.span`
   margin-left:  12px;
   font-weight: 500;
 
+  @media only screen and (max-width: 850px) {
+    width: 120px
+  }
+
   @media only screen and (max-width: 500px) {
     margin-right: 10px;
   }
 
+  @media only screen and (max-width: 420px) {
+    font-size: 11px;
+    margin-right: 0px;
+  }
 `;
 
 const ItemValue = styled.div`
@@ -192,7 +209,6 @@ const TrashButton = styled.div`
     margin-right: 0px;
     margin-bottom: 25px;
   }
-
 `
 
 const EyeButton = styled.div`
@@ -202,7 +218,6 @@ const EyeButton = styled.div`
   @media only screen and (max-width: 500px) {
     margin-right: 0px;
   }
-
 `;
 
 const spin = keyframes`
@@ -222,59 +237,66 @@ const Spinner = styled.div`
     height: 20px;
     margin-right: 20px;
     animation: ${spin} 1s linear infinite;
+    margin-right: 20px;
+  
+  @media only screen and (max-width: 500px) {
+    margin-right: 0px;
+    margin-bottom: 25px;
+  }
+
 `;
 
 const FloatingMessage = styled.div`
-  position: fixed;
-  top: 20px;
-  right: 20px;
-  padding: 10px 20px;
-  background-color: ${props => {
-    switch (props.type) {
-      case "success":
-        return "#4CAF50";
-      case "warning":
-        return "#c5b62a";
-      case "error":
-        return "#F44336";
-      default:
-        return "#F44336";
-    }
-  }};  
-  color: white;
-  border-radius: 5px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  z-index: 1000;
-  opacity: 0;
-  animation: fadeInOut 1s forwards;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 10px 20px;
+    background-color: ${props => {
+      switch (props.type) {
+        case "success":
+          return "#4CAF50";
+        case "warning":
+          return "#c5b62a";
+        case "error":
+          return "#F44336";
+        default:
+          return "#F44336";
+      }
+    }};  
+    color: white;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    opacity: 0;
+    animation: fadeInOut 1s forwards;
 
-  @keyframes fadeInOut {
-    0% {
-      opacity: 0;
+    @keyframes fadeInOut {
+      0% {
+        opacity: 0;
+      }
+      20% {
+        opacity: 1;
+      }
+      80% {
+        opacity: 1;
+      }
+      100% {
+        opacity: 0;
+      }
     }
-    20% {
-      opacity: 1;
-    }
-    80% {
-      opacity: 1;
-    }
-    100% {
-      opacity: 0;
-    }
-  }
 
-  &.fade-out {
-    animation: fadeOut 0.75s forwards;
-  }
+    &.fade-out {
+      animation: fadeOut 0.75s forwards;
+    }
 
-  @keyframes fadeOut {
-    0% {
-      opacity: 1;
+    @keyframes fadeOut {
+      0% {
+        opacity: 1;
+      }
+      100% {
+        opacity: 0;
+      }
     }
-    100% {
-      opacity: 0;
-    }
-  }
 `;
 
 export { Spinner, ItemInfoPart2, ItemCardContainer, ItemInfo, ItemId, ItemInfoPart3, StatusBadge, ItemActions, TrashButton, EyeButton, ItemName, ItemColor, ItemValue, ItemNameNBadgeDiv, FloatingMessage };

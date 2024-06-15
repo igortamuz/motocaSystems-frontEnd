@@ -6,12 +6,10 @@ import { CenteredContainer } from "./styled";
 export default function MotoTable() {
 
   //States
-
   const [motos, setMotos] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
 
   ///Chamado da api
-
   useEffect(() => {
     fetch('http://localhost:3001/motos')
       .then(response => response.json())
