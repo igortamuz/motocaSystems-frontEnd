@@ -184,11 +184,11 @@ const ItemActions = styled.div`
   }
 
   svg:first-child path {
-    fill: #ff4c51;
+    fill: transparent;
   }
 
   svg:last-child path {
-    fill: #e7e3fc;
+    fill: transparent;
   }
 
   @media only screen and (max-width: 500px) {
@@ -197,8 +197,6 @@ const ItemActions = styled.div`
     align-items: center;
     padding-right: 20px;
   }
-
-
 `;
 
 const TrashButton = styled.div`
@@ -214,7 +212,7 @@ const TrashButton = styled.div`
 const EyeButton = styled.div`
   margin-right: 53.36px;
   cursor: pointer;
-
+  
   @media only screen and (max-width: 500px) {
     margin-right: 0px;
   }
@@ -237,13 +235,11 @@ const Spinner = styled.div`
     height: 20px;
     margin-right: 20px;
     animation: ${spin} 1s linear infinite;
-    margin-right: 20px;
   
   @media only screen and (max-width: 500px) {
-    margin-right: 0px;
+    margin-right: -15px;
     margin-bottom: 25px;
   }
-
 `;
 
 const FloatingMessage = styled.div`
@@ -252,17 +248,17 @@ const FloatingMessage = styled.div`
     right: 20px;
     padding: 10px 20px;
     background-color: ${props => {
-      switch (props.type) {
-        case "success":
-          return "#4CAF50";
-        case "warning":
-          return "#c5b62a";
-        case "error":
-          return "#F44336";
-        default:
-          return "#F44336";
-      }
-    }};  
+    switch (props.type) {
+      case "success":
+        return "#4CAF50";
+      case "warning":
+        return "#c5b62a";
+      case "error":
+        return "#F44336";
+      default:
+        return "#F44336";
+    }
+  }};  
     color: white;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);

@@ -1,0 +1,132 @@
+{
+  "motos": [
+    {
+      "code": "78571",
+      "name": "MIDNIGHT MOTO",
+      "color": "PRETO",
+      "price": "31.700,00",
+      "status": "Sem estoque",
+      "id": "u1v2"
+    },
+    {
+      "id": "w3x4",
+      "code": "78572",
+      "name": "SUNRISE MOTO",
+      "color": "LARANJA",
+      "price": "35.200,00",
+      "status": "Sem estoque"
+    },
+    {
+      "id": "y5z6",
+      "code": "78573",
+      "name": "PEARL MOTO",
+      "color": "PRATA",
+      "price": "38.700,00",
+      "status": "Em estoque"
+    },
+    {
+      "id": "a7b8",
+      "code": "78574",
+      "name": "NEON MOTO",
+      "color": "VERDE",
+      "price": "36.400,00",
+      "status": "Em trânsito"
+    },
+    {
+      "id": "c9d0",
+      "code": "78575",
+      "name": "SHADOW MOTO",
+      "color": "PRETO",
+      "price": "40.300,00",
+      "status": "Sem estoque"
+    },
+    {
+      "id": "e1f2",
+      "code": "78576",
+      "name": "ECLIPSE MOTO",
+      "color": "AZUL",
+      "price": "37.800,00",
+      "status": "Em estoque"
+    },
+    {
+      "id": "g3h4",
+      "code": "78577",
+      "name": "CHROME MOTO",
+      "color": "PRATA",
+      "price": "42.500,00",
+      "status": "Em trânsito"
+    },
+    {
+      "id": "i5j6",
+      "code": "78578",
+      "name": "RUBY MOTO",
+      "color": "VERMELHO",
+      "price": "39.100,00",
+      "status": "Sem estoque"
+    },
+    {
+      "id": "k7l8",
+      "code": "78579",
+      "name": "ONYX MOTO",
+      "color": "PRETO",
+      "price": "44.000,00",
+      "status": "Em trânsito"
+    },
+    {
+      "id": "m9n0",
+      "code": "78580",
+      "name": "EMERALD MOTO",
+      "color": "VERDE",
+      "price": "41.600,00",
+      "status": "Sem estoque"
+    },
+    {
+      "id": "o1p2",
+      "code": "78581",
+      "name": "SAPPHIRE MOTO",
+      "color": "AZUL",
+      "price": "46.900,00",
+      "status": "Sem estoque"
+    },
+    {
+      "id": "q3r4",
+      "code": "78582",
+      "name": "GOLD MOTO",
+      "color": "DOURADO",
+      "price": "50.800,00",
+      "status": "Em trânsito"
+    },
+    {
+      "id": "u7v8",
+      "code": "78584",
+      "name": "COPPER MOTO",
+      "color": "DOURADO",
+      "price": "53.300,00",
+      "status": "Sem estoque"
+    },
+    {
+      "id": "w9x0",
+      "code": "78585",
+      "name": "CRIMSON MOTO",
+      "color": "VERMELHO",
+      "price": "51.900,00",
+      "status": "Em trânsito"
+    },
+    {
+      "id": "y1z2",
+      "code": "78586",
+      "name": "OCEAN MOTO",
+      "color": "AZUL",
+      "price": "56.800,00",
+      "status": "Sem estoque"
+    },
+    {
+      "id": "c5d6",
+      "code": "78588",
+      "name": "BLACK MOTO",
+      "color": "PRETO",
+      "price": "59.300,00",
+      "status": "Sem estoque"
+    }
+  ]
+}

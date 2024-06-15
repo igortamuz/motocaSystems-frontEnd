@@ -1,24 +1,24 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { Spinner, ItemCardContainer, ItemInfo, ItemId, ItemInfoPart2, ItemInfoPart3, StatusBadge, ItemActions, TrashButton, EyeButton, ItemName, ItemValue, ItemColor, ItemNameNBadgeDiv, FloatingMessage } from './styled';
-import trashIcon from './../../assets/buttons/Trash.png';
-import eyeIcon from './../../assets/buttons/Eye.png';
+import { Eye, Trash  } from 'lucide-react';
+
 import { Link } from 'react-router-dom';
 
 export default function Card({ id, code, name, price, color, status }) {
-    // States
+    //States
     const [floatingMessage, setFloatingMessage] = useState({ visible: false, message: '', type: '' });
     const [deleted, setDeleted] = useState(false);
     const [loading, setLoading] = useState(false);
 
-    // Uppercase para padronização
+    //Uppercase para padronização
     const nameUpper = name.toUpperCase();
     const colorUpper = color.toUpperCase();
 
-    // Delay pra ver o loading
+    //Delay pra ver o loading
     const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
-    // Função para mostrar mensagem
+    //Função para mostrar mensagem
     const showMessage = (message, type) => {
         setFloatingMessage({ visible: true, message, type });
         setTimeout(() => {
@@ -26,7 +26,7 @@ export default function Card({ id, code, name, price, color, status }) {
         }, 2000);
     };
 
-    // Handle
+    //Handle
     const handleDelete = async () => {
         if (status === "Em estoque") {
             showMessage("Você não pode excluir um item em estoque!", "warning");
@@ -49,7 +49,7 @@ export default function Card({ id, code, name, price, color, status }) {
         }
     };
 
-    // Componente
+    //Componente
     return (
         <>
             {!deleted && (
@@ -71,13 +71,13 @@ export default function Card({ id, code, name, price, color, status }) {
                         {loading ? (
                             <Spinner />
                         ) : (
-                            <TrashButton onClick={handleDelete}>
-                                <img src={trashIcon} alt="TrashButton" height="20" />
+                            <TrashButton onClick={handleDelete}>                          
+                                <Trash color='#FF4C51' size="1.6rem"/>
                             </TrashButton>
                         )}
                         <Link to={`editar/${id}`} style={{ textDecoration: 'none' }}>
                             <EyeButton>
-                                <img src={eyeIcon} alt="EyeButton" height="20" />
+                                <Eye color='#E7E3FC' size="1.6rem"/>
                             </EyeButton>
                         </Link>
                     </ItemActions>

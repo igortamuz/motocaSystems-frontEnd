@@ -17,12 +17,12 @@ import Search from "../../assets/input/Search.png"
 import Plus from "../../assets/input/Plus.png"
 
 export default function PageTitle({ title, searchTerm, setSearchTerm }) {
-  // Função para mudança da busca
+  //Função para mudança da busca
   const handleSearchChange = (event) => {
     setSearchTerm(event.target.value);
   };
 
-  //Componente 1
+  //Pagina 1
   if (title === "Tabela de Motos") {
     return (
       <Container>
@@ -48,7 +48,7 @@ export default function PageTitle({ title, searchTerm, setSearchTerm }) {
     );
   }
 
-  //Componente 2
+  //Pagina 2
   return (
     <Container>
       <TitleContainer>

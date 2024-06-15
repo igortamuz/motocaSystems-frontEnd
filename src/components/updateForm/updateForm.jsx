@@ -25,8 +25,7 @@ import {
 import SetaUp from "../../assets/input/SetaUp.png";
 
 export default function UpdateForm({ id, code, name, price, color, status }) {
-
-    // States
+    //States
     const [codigo, setCodigo] = useState(code || "");
     const [modelo, setModelo] = useState(name || "");
     const [cor, setCor] = useState(color || "");
@@ -46,7 +45,7 @@ export default function UpdateForm({ id, code, name, price, color, status }) {
     const options = ["Sem estoque", "Em trânsito", "Em estoque"];
     const dropdownRef = useRef(null);
 
-    // useEffect
+    //useEffect
     useEffect(() => {
         function handleClickOutside(event) {
             if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
@@ -65,7 +64,7 @@ export default function UpdateForm({ id, code, name, price, color, status }) {
         };
     }, [isOpen]);
 
-    // Inputs
+    //Inputs
     const validateInputs = () => {
         let valid = true;
         const newErrors = {
@@ -101,7 +100,7 @@ export default function UpdateForm({ id, code, name, price, color, status }) {
         return valid;
     };
 
-    // Handles
+    //Handles
     const handleSubmit = async (e) => {
         e.preventDefault();
 
@@ -112,7 +111,7 @@ export default function UpdateForm({ id, code, name, price, color, status }) {
         setIsSubmitting(true);
 
         try {
-            //get do axios
+            //Get do axios
             const existingMoto = await axios.get(`http://localhost:3001/motos/${id}`);
             const existingMotoData = existingMoto.data;
 
@@ -194,8 +193,7 @@ export default function UpdateForm({ id, code, name, price, color, status }) {
     //Remoção de warning
     if (setCodigo) { }
 
-
-    // Componente
+    //Componente
     return (
         <>
             <FormTitle title={"Edite as informações que preferir! 📝"} />

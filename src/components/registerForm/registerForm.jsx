@@ -25,6 +25,7 @@ import {
 import Plus from "../../assets/input/Plus.png";
 
 export default function RegisterForm() {
+    //States
     const [codigo, setCodigo] = useState("");
     const [modelo, setModelo] = useState("");
     const [cor, setCor] = useState("");
@@ -65,6 +66,7 @@ export default function RegisterForm() {
         };
     }, [isOpen]);
 
+    //Validate Inputs
     const validateInputs = () => {
         let valid = true;
         const newErrors = {
@@ -104,6 +106,7 @@ export default function RegisterForm() {
         return valid;
     };
 
+    //Handles
     const handleSubmit = async (e) => {
         e.preventDefault();
 
@@ -163,7 +166,7 @@ export default function RegisterForm() {
             setFloatingMessage({ visible: true, message: "Houve erro ao registrar a moto!", type: "error" });
         }
 
-        setLoading(false); // Desativa o spinner após a conclusão da ação
+        setLoading(false); 
 
         setTimeout(() => {
             setFloatingMessage({ ...floatingMessage, visible: false });
@@ -203,6 +206,7 @@ export default function RegisterForm() {
         }
     };
 
+    //Componente
     return (
         <>
             <FormTitle title={"Preencha as informações abaixo para registrar uma Moto 🏍️"} />
