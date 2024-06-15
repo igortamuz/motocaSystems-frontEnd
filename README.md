@@ -1,7 +1,7 @@
 ## Informações básicas (Leitura Opcional)
 
-1. Este repositório no GitHub já possui 20 cloners únicos até o momento (15/06/2024), significando que 20 ou mais pessoas diferentes estão o acessando. Peço aos usuários e concorrentes que, ao utilizarem partes do código, mencionem sua origem/escritor! Agradeço desde já!
-2. Esse projeto foi desenvolvimento foi do dia 14/06/2024 ao dia 15/06/2024.
+1. Este repositório no GitHub já possui 20 cloners únicos até o momento (15/06/2024), significando que 20 ou mais pessoas diferentes estão o acessando desde a liberação para repositório público. Então, peço aos usuários e concorrentes que, ao utilizarem partes do código, mencionem sua origem/escritor! Agradeço desde já!
+2. Esse projeto foi desenvolvimento foi criado no dia 13/06/2024 e desenvolvido dia 14/06/2024 ao dia 15/06/2024.
 3. O Desenvolvimento foi dividido em dois dias: 
    - 1º Dia: Criação e implementação do visual e funções gerais.
    - 2º Dia: Limpeza do código e desenvolvimento, adição de extras e correção do layout responsivo.
@@ -15,6 +15,7 @@
 
 - Vídeo demonstração do projeto: https://www.youtube.com/watch?v=hxMAuitgrEg
 - Vídeo demonstração da responsividade: https://www.youtube.com/watch?v=B8xUiWAWKEY
+
 8. Os itens "Em estoque", não podem ser apagados! Para evitar que, um funcionário o apague sem intenção. Sendo assim, para apagá-lo você deve ir em sua edição e editá-lo para "Em trânsito" ou "Sem estoque"!
 9. O código da moto, ex: "#0001", não pode ser repetido para evitar diferentes nomeações, cores e preços utilizando do mesmo código!
 
