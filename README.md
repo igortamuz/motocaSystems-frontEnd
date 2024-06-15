@@ -1,13 +1,14 @@
 ## Informações básicas (Leitura Opcional)
 
-1. Esse projeto foi desenvolvimento em um pouco menos de dois dias.
-2. O Desenvolvimento foi dividido em dois dias: 
+1. Este repositório no GitHub já possui 17 cloners únicos até o momento (15/06/2024). Peço aos usuários e concorrentes que, ao utilizarem partes do código, mencionem sua origem/escritor! Agradeço!
+2. Esse projeto foi desenvolvimento foi do dia 14/06/2024 ao dia 15/06/2024.
+3. O Desenvolvimento foi dividido em dois dias: 
    - 1º Dia: Criação e implementação do visual e funções gerais.
    - 2º Dia: Limpeza do código e desenvolvimento, adição de extras e correção do layout responsivo.
-3. Esse projeto tem como intuito desenvolver, desafiar e por em prova meu conhecimento em front-end.
-4. Escolhido a nomeação em "PT-BR" das páginas pensado na utilização de um possível cliente que leria um link, por exemplo.
-5. Em Desktop, é utilizado as dimensões do projeto em figma! Por exemplo a dimensão dos cards: 1408x138 
-6. A responsividade foi desenvolvida para: 
+4. Esse projeto tem como intuito desenvolver, desafiar e por em prova meu conhecimento em front-end.
+5. Escolhido a nomeação em "PT-BR" das páginas pensado na utilização de um possível cliente que leria um link, por exemplo.
+6. Em Desktop, é utilizado as dimensões do projeto em figma! Por exemplo a dimensão dos cards: 1408x138 
+7. A responsividade foi desenvolvida para: 
    - 1º 1920px --- 690px (Obs: Em 850px, ocorre a primeira adapatação)
    - 2º 500px --- 420px
    - 3º 420px --- 370px
@@ -43,11 +44,24 @@ npm  i
 ```
 
 3. Quando estiver na pasta: `teste-motocaSystems-frontEnd`, Rode o JSON server:
+
+```bash
+npm run server
+```
+
 ```bash
 json-server  --watch  src/db.json  --port  3001
 ```
 
-4. Em outro terminal, rode a aplicação React:
+Obs: O código entrará para você no src e rodará o db.json: "src/db.json").
+
+Caso esteja na pasta anterior da `teste-motocaSystems-frontEnd`:
+
+```bash
+npm run servert
+```
+
+4. Em outro terminal, rode a aplicação `React`:
 
 ```bash
 npm  start
