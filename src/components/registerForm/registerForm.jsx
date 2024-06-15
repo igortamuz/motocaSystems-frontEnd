@@ -18,13 +18,12 @@ import {
     DropdownContent,
     ErrorMessage,
     DropdownErrorMessage,
-    FloatingMessage
+    FloatingMessage,
+    Spinner
 } from "./styled";
 import Plus from "../../assets/input/Plus.png";
 
 export default function RegisterForm() {
-
-    //States
     const [codigo, setCodigo] = useState("");
     const [modelo, setModelo] = useState("");
     const [cor, setCor] = useState("");
@@ -32,18 +31,21 @@ export default function RegisterForm() {
     const [selectedOption, setSelectedOption] = useState("");
     const [isOpen, setIsOpen] = useState(false);
     const [errors, setErrors] = useState({
-        codigo: '',
-        modelo: '',
-        cor: '',
-        valor: '',
-        selectedOption: ''
+        codigo: "",
+        modelo: "",
+        cor: "",
+        valor: "",
+        selectedOption: ""
     });
-    const [floatingMessage, setFloatingMessage] = useState({ visible: false, message: '', type: '' });
-
+    const [floatingMessage, setFloatingMessage] = useState({
+        visible: false,
+        message: "",
+        type: ""
+    });
+    const [loading, setLoading] = useState(false); // Estado para controlar o spinner
     const options = ["Sem estoque", "Em trânsito", "Em estoque"];
     const dropdownRef = useRef(null);
 
-    //UseEffect
     useEffect(() => {
         function handleClickOutside(event) {
             if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
@@ -62,40 +64,38 @@ export default function RegisterForm() {
         };
     }, [isOpen]);
 
-    //Inputs
     const validateInputs = () => {
         let valid = true;
         const newErrors = {
-            codigo: '',
-            modelo: '',
-            cor: '',
-            valor: '',
-            selectedOption: ''
+            codigo: "",
+            modelo: "",
+            cor: "",
+            valor: "",
+            selectedOption: ""
         };
 
-        //Erros
         if (codigo.length > 6 || codigo.length < 4 || !/^\d+$/.test(codigo)) {
-            newErrors.codigo = 'Mínimo de 4 e máximo de 6 números!';
+            newErrors.codigo = "Mínimo de 4 e máximo de 6 números!";
             valid = false;
         }
 
         if (!modelo.trim()) {
-            newErrors.modelo = 'Preencha o modelo da moto.';
+            newErrors.modelo = "Preencha o modelo da moto.";
             valid = false;
         }
 
         if (!cor.trim() || /\d/.test(cor)) {
-            newErrors.cor = 'A cor não pode conter números.';
+            newErrors.cor = "A cor não pode conter números.";
             valid = false;
         }
 
         if (!valor.trim() || !/^(\d{1,3}(\.\d{3})*|\d+)(,\d{2})?$/.test(valor)) {
-            newErrors.valor = 'Informe um valor válido (ex: 10000 ou 10.000,00).';
+            newErrors.valor = "Informe um valor válido (ex: 10000 ou 10.000,00).";
             valid = false;
         }
 
         if (!selectedOption) {
-            newErrors.selectedOption = 'Selecione o status da moto.';
+            newErrors.selectedOption = "Selecione o status da moto.";
             valid = false;
         }
 
@@ -103,7 +103,6 @@ export default function RegisterForm() {
         return valid;
     };
 
-    //Handles
     const handleSubmit = async (e) => {
         e.preventDefault();
 
@@ -111,28 +110,28 @@ export default function RegisterForm() {
             return;
         }
 
-        try {
+        setLoading(true); // Ativa o spinner quando o botão é clicado
 
-            //Verificação de uso de código
+        try {
             const existingMoto = await axios.get(`http://localhost:3001/motos?code=${codigo}`);
             if (existingMoto.data.length > 0) {
-                setErrors({ ...errors, codigo: 'Este código já está em uso. Por favor, escolha outro.' });
+                setErrors({ ...errors, codigo: "Este código já está em uso. Por favor, escolha outro." });
+                setLoading(false); // Desativa o spinner em caso de erro
                 return;
             } else {
-                setErrors({ ...errors, codigo: '' });
+                setErrors({ ...errors, codigo: "" });
             }
 
-            let formattedValue = valor.replace(/[^\d,]/g, '');
-            const decimalSeparatorIndex = formattedValue.indexOf(',');
+            let formattedValue = valor.replace(/[^\d,]/g, "");
+            const decimalSeparatorIndex = formattedValue.indexOf(",");
 
-            //Verificação de milhar!
             if (decimalSeparatorIndex !== -1 && decimalSeparatorIndex !== formattedValue.length - 1) {
                 const integerPart = formattedValue.substring(0, decimalSeparatorIndex);
                 const decimalPart = formattedValue.substring(decimalSeparatorIndex + 1);
-                formattedValue = integerPart.replace(/\B(?=(\d{3})+(?!\d))/g, '.') + ',' + decimalPart;
+                formattedValue = integerPart.replace(/\B(?=(\d{3})+(?!\d))/g, ".") + "," + decimalPart;
             } else {
                 formattedValue += ",00";
-                formattedValue = formattedValue.replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+                formattedValue = formattedValue.replace(/\B(?=(\d{3})+(?!\d))/g, ".");
             }
 
             const newMoto = {
@@ -143,7 +142,6 @@ export default function RegisterForm() {
                 status: selectedOption
             };
 
-            //Post do axios
             await axios.post("http://localhost:3001/motos", newMoto);
             setCodigo("");
             setModelo("");
@@ -152,26 +150,24 @@ export default function RegisterForm() {
             setSelectedOption("");
             setIsOpen(false);
             setErrors({
-                codigo: '',
-                modelo: '',
-                cor: '',
-                valor: '',
-                selectedOption: ''
+                codigo: "",
+                modelo: "",
+                cor: "",
+                valor: "",
+                selectedOption: ""
             });
 
-            //Mensagem de sucesso
             setFloatingMessage({ visible: true, message: "A Moto foi RegistradA com sucesso!", type: "success" });
         } catch (error) {
             console.error("Error when creating the moto:", error);
-
-            // Mensagem de erro
             setFloatingMessage({ visible: true, message: "Houve erro ao registrar a moto!", type: "error" });
         }
 
-        //Esconder a mensagem em 4 segundos
+        setLoading(false); // Desativa o spinner após a conclusão da ação
+
         setTimeout(() => {
             setFloatingMessage({ ...floatingMessage, visible: false });
-        }, 4000);
+        }, 1500);
     };
 
     const handleItemClick = (option) => {
@@ -182,32 +178,31 @@ export default function RegisterForm() {
     const handleCodigoChange = (value) => {
         setCodigo(value);
         if (errors.codigo) {
-            setErrors({ ...errors, codigo: '' });
+            setErrors({ ...errors, codigo: "" });
         }
     };
 
     const handleModeloChange = (value) => {
         setModelo(value);
         if (errors.modelo) {
-            setErrors({ ...errors, modelo: '' });
+            setErrors({ ...errors, modelo: "" });
         }
     };
 
     const handleCorChange = (value) => {
         setCor(value);
         if (errors.cor) {
-            setErrors({ ...errors, cor: '' });
+            setErrors({ ...errors, cor: "" });
         }
     };
 
     const handleValorChange = (value) => {
         setValor(value);
         if (errors.valor) {
-            setErrors({ ...errors, valor: '' });
+            setErrors({ ...errors, valor: "" });
         }
     };
 
-    //Componente
     return (
         <>
             <FormTitle title={"Preencha as informações abaixo para registrar uma Moto 🏍️"} />
@@ -238,7 +233,7 @@ export default function RegisterForm() {
                         <LabelStyled>{"Status"}</LabelStyled>
                         <DropdownButton onClick={() => setIsOpen(!isOpen)}>
                             <Textbutton>
-                                {selectedOption || ''}
+                                {selectedOption || ""}
                             </Textbutton>
                         </DropdownButton>
                         <DropdownContent isOpen={isOpen}>
@@ -253,7 +248,7 @@ export default function RegisterForm() {
                 </FormBody>
 
                 <ButtonContainer onClick={handleSubmit}>
-                    <ButtonImage src={Plus} alt="Plus icon" />
+                    {loading ? <Spinner /> : <ButtonImage src={Plus} alt="Plus icon" />}
                     {"REGISTRAR"}
                 </ButtonContainer>
             </FormContainer>

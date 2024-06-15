@@ -1,5 +1,5 @@
-import styled from "styled-components";
 import Seta from "../../assets/input/Seta.png";
+import styled, { keyframes } from "styled-components";
 
 const FormContainer = styled.div`
     display: flex;
@@ -245,7 +245,7 @@ const FloatingMessage = styled.div`
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   z-index: 1000;
   opacity: 0;
-  animation: fadeInOut 0.75s forwards;
+  animation: fadeInOut 1.25s forwards;
 
   @keyframes fadeInOut {
     0% {
@@ -263,7 +263,7 @@ const FloatingMessage = styled.div`
   }
 
   &.fade-out {
-    animation: fadeOut 0.75s forwards;
+    animation: fadeOut 1s forwards;
   }
 
   @keyframes fadeOut {
@@ -285,6 +285,26 @@ const LabelStyledCode = styled.span`
   padding: 0 5px;
   font-size: 13px;
 `;
+
+const spin = keyframes`
+  0% {
+      transform: rotate(0deg);
+  }
+  100% {
+      transform: rotate(360deg);
+  }
+`;
+
+const Spinner = styled.div`
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top: 2px solid white;
+  width: 20px;
+  height: 20px;
+  animation: ${spin} 1s linear infinite;
+  margin-right: 5px;
+`;
+
 export {
   FormContainer,
   InputCode,
@@ -303,5 +323,6 @@ export {
   ErrorMessage,
   DropdownErrorMessage,
   FloatingMessage,
-  LabelStyledCode
+  LabelStyledCode,
+  Spinner
 };

@@ -18,12 +18,13 @@ import {
     DropdownContent,
     ErrorMessage,
     DropdownErrorMessage,
-    FloatingMessage
+    FloatingMessage,
+    Spinner 
 } from "./styled";
 import SetaUp from "../../assets/input/SetaUp.png";
 
 export default function UpdateForm({ id, code, name, price, color, status }) {
-    
+
     // States
     const [codigo, setCodigo] = useState(code || "");
     const [modelo, setModelo] = useState(name || "");
@@ -39,6 +40,7 @@ export default function UpdateForm({ id, code, name, price, color, status }) {
         selectedOption: ''
     });
     const [floatingMessage, setFloatingMessage] = useState({ visible: false, message: '', type: '' });
+    const [isSubmitting, setIsSubmitting] = useState(false); 
 
     const options = ["Sem estoque", "Em trânsito", "Em estoque"];
     const dropdownRef = useRef(null);
@@ -74,11 +76,6 @@ export default function UpdateForm({ id, code, name, price, color, status }) {
         };
 
         //Erros
-        if (codigo.length > 6 || codigo.length < 4 || !/^\d+$/.test(codigo)) {
-            newErrors.codigo = 'Mínimo de 4 e máximo de 6 números!';
-            valid = false;
-        }
-
         if (!modelo.trim()) {
             newErrors.modelo = 'Preencha o modelo da moto.';
             valid = false;
@@ -111,7 +108,10 @@ export default function UpdateForm({ id, code, name, price, color, status }) {
             return;
         }
 
+        setIsSubmitting(true); 
+
         try {
+            //get do axios
             const existingMoto = await axios.get(`http://localhost:3001/motos/${id}`);
             const existingMotoData = existingMoto.data;
 
@@ -122,12 +122,11 @@ export default function UpdateForm({ id, code, name, price, color, status }) {
                 existingMotoData.price === valor &&
                 existingMotoData.status === selectedOption
             ) {
-
-
                 setFloatingMessage({ visible: true, message: "Não é necessário fazer o update, pois está idêntico.", type: "warning" });
                 setTimeout(() => {
                     setFloatingMessage(prevFloatingMessage => ({ ...prevFloatingMessage, visible: false }));
-                }, 1000);
+                    setIsSubmitting(false); 
+                }, 1150);
                 return;
             }
 
@@ -161,14 +160,8 @@ export default function UpdateForm({ id, code, name, price, color, status }) {
 
         setTimeout(() => {
             setFloatingMessage(prevFloatingMessage => ({ ...prevFloatingMessage, visible: false }));
+            setIsSubmitting(false); 
         }, 1000);
-    };
-
-    const handleCodigoChange = (value) => {
-        setCodigo(value);
-        if (errors.codigo) {
-            setErrors(prevErrors => ({ ...prevErrors, codigo: '' }));
-        }
     };
 
     const handleItemClick = (option) => {
@@ -206,7 +199,7 @@ export default function UpdateForm({ id, code, name, price, color, status }) {
                     <Wrapper>
                         <LabelStyled>{"Código"}</LabelStyled>
                         <HashSymbol>#</HashSymbol>
-                        <InputCode value={codigo} onChange={(e) => handleCodigoChange(e.target.value)} readOnly />
+                        <InputCode value={codigo} readOnly/>
                         {errors.codigo && <ErrorMessage>{errors.codigo}</ErrorMessage>}
                     </Wrapper>
                     <Wrapper>
@@ -242,8 +235,8 @@ export default function UpdateForm({ id, code, name, price, color, status }) {
                     </DropdownContainer>
                 </FormBody>
 
-                <ButtonContainer onClick={handleSubmit}>
-                    <ButtonImage src={SetaUp} alt="SetaUp icon" />
+                <ButtonContainer onClick={handleSubmit} disabled={isSubmitting}>
+                    {isSubmitting ? <Spinner /> : <ButtonImage src={SetaUp} alt="SetaUp icon" />}
                     {"ATUALIZAR"}
                 </ButtonContainer>
             </FormContainer>

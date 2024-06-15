@@ -32,9 +32,8 @@ const ItemCardContainer = styled.div`
 
   @media only screen and (max-width: 850px) {
     width: 100vw;
+    border-radius: 0;
   }
-
-
 `;
 
 const ItemInfo = styled.div`
@@ -52,10 +51,28 @@ const ItemId = styled.h2`
   margin-left: 56px;
   font-style: normal;
   width: 50px;
+
+  @media only screen and (max-width: 500px) {
+    margin-left: 16px;
+  }
+
+  @media only screen and (max-width: 390px) {
+    margin-left: 6px;
+  }
+
   `;
 
 const ItemInfoPart2 = styled.div`
   width: 20%;
+
+  @media only screen and (max-width: 500px) {
+    width: 7%;
+  }
+
+  @media only screen and (max-width: 390px) {
+    width: 5%;
+  }
+
 `;
 
 const ItemInfoPart3 = styled.div`
@@ -63,17 +80,43 @@ const ItemInfoPart3 = styled.div`
   flex-direction: column;
   margin-left: 58px;
   width: 50%;
+
+  @media only screen and (max-width: 500px) {
+    width: 80%;
+  }
+
 `;
 
 const ItemNameNBadgeDiv = styled.div`
     display: flex;
     align-items: center;
     margin-bottom: 10px;
+
+  @media only screen and (max-width: 500px) {
+    justify-content: space-between;
+  }
+
 `
 
 const ItemName = styled.div`
   font-weight: 600;
   font-size: 17px;
+
+  @media only screen and (max-width: 500px) {
+    font-size: 15px;
+    background-color: green;
+    min-width: 120px;
+    max-width: 120px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
+  @media only screen and (max-width: 390px) {
+    min-width: 90px;
+    max-width: 90px;
+  }
+
 `;
 
 const StatusBadge = styled.span`
@@ -95,6 +138,11 @@ const StatusBadge = styled.span`
   align-self: flex-start;
   margin-left:  12px;
   font-weight: 500;
+
+  @media only screen and (max-width: 500px) {
+    margin-right: 10px;
+  }
+
 `;
 
 const ItemValue = styled.div`
@@ -125,16 +173,36 @@ const ItemActions = styled.div`
   svg:last-child path {
     fill: #e7e3fc;
   }
+
+  @media only screen and (max-width: 500px) {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-right: 20px;
+  }
+
+
 `;
 
 const TrashButton = styled.div`
   margin-right: 20px;
   cursor: pointer;
+
+  @media only screen and (max-width: 500px) {
+    margin-right: 0px;
+    margin-bottom: 25px;
+  }
+
 `
 
 const EyeButton = styled.div`
   margin-right: 53.36px;
   cursor: pointer;
+
+  @media only screen and (max-width: 500px) {
+    margin-right: 0px;
+  }
+
 `;
 
 const spin = keyframes`
@@ -178,7 +246,7 @@ const FloatingMessage = styled.div`
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   z-index: 1000;
   opacity: 0;
-  animation: fadeInOut 1.5s forwards;
+  animation: fadeInOut 1s forwards;
 
   @keyframes fadeInOut {
     0% {
@@ -196,7 +264,7 @@ const FloatingMessage = styled.div`
   }
 
   &.fade-out {
-    animation: fadeOut 1.5s forwards;
+    animation: fadeOut 0.75s forwards;
   }
 
   @keyframes fadeOut {

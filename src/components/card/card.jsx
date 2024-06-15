@@ -6,22 +6,30 @@ import eyeIcon from './../../assets/buttons/Eye.png';
 import { Link } from 'react-router-dom';
 
 export default function Card({ id, code, name, price, color, status }) {
-    //States
+    // States
     const [floatingMessage, setFloatingMessage] = useState({ visible: false, message: '', type: '' });
     const [deleted, setDeleted] = useState(false);
     const [loading, setLoading] = useState(false);
 
-    ///Uppercasae para padronização
+    // Uppercase para padronização
     const nameUpper = name.toUpperCase();
     const colorUpper = color.toUpperCase();
 
-    //Delay pra ver o loading
+    // Delay pra ver o loading
     const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
-    //Handle
+    // Função para mostrar mensagem
+    const showMessage = (message, type) => {
+        setFloatingMessage({ visible: true, message, type });
+        setTimeout(() => {
+            setFloatingMessage({ visible: false, message: '', type: '' });
+        }, 2000);
+    };
+
+    // Handle
     const handleDelete = async () => {
         if (status === "Em estoque") {
-            setFloatingMessage({ visible: true, message: "Você não pode excluir um item em estoque!", type: "warning" });
+            showMessage("Você não pode excluir um item em estoque!", "warning");
             return;
         }
 
@@ -29,20 +37,19 @@ export default function Card({ id, code, name, price, color, status }) {
             setLoading(true);
             await axios.delete(`http://localhost:3001/motos/${id}`);
             await delay(1000);
-            setFloatingMessage({ visible: true, message: "Item excluído com sucesso!", type: "success" });
+            showMessage("Item excluído com sucesso!", "success");
             setDeleted(true);
-            setTimeout(() => {
-                setLoading(false);
-                console.log("Item excluído com sucesso!");
-            }, 1000);
+            setLoading(false);
+            console.log("Item excluído com sucesso!");
+
         } catch (error) {
-            setFloatingMessage({ visible: true, message: "Erro ao excluir o item!", type: "error" });
+            showMessage("Erro ao excluir o item!", "error");
             console.error("Erro ao excluir o item:", error);
             setLoading(false);
         }
     };
 
-    //Componente
+    // Componente
     return (
         <>
             {!deleted && (
@@ -51,7 +58,6 @@ export default function Card({ id, code, name, price, color, status }) {
                         <ItemInfoPart2>
                             <ItemId>#{code}</ItemId>
                         </ItemInfoPart2>
-
                         <ItemInfoPart3>
                             <ItemNameNBadgeDiv>
                                 <ItemName>{nameUpper}</ItemName>
@@ -71,7 +77,7 @@ export default function Card({ id, code, name, price, color, status }) {
                         )}
                         <Link to={`editar/${id}`} style={{ textDecoration: 'none' }}>
                             <EyeButton>
-                                <img src={eyeIcon} alt="Eyebutton" height="20" />
+                                <img src={eyeIcon} alt="EyeButton" height="20" />
                             </EyeButton>
                         </Link>
                     </ItemActions>
