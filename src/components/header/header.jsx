@@ -5,6 +5,7 @@ import PerfilImage from "../../assets/header/Perfil.png";
 import { Link } from 'react-router-dom';
 
 export default function Header() {
+  //Componente
   return (
     <HeaderContainer>
       <>

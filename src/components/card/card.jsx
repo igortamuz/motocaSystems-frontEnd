@@ -6,19 +6,19 @@ import eyeIcon from './../../assets/buttons/Eye.png';
 import { Link } from 'react-router-dom';
 
 export default function Card({ id, code, name, price, color, status }) {
-    // States
+    //States
     const [floatingMessage, setFloatingMessage] = useState({ visible: false, message: '', type: '' });
     const [deleted, setDeleted] = useState(false);
     const [loading, setLoading] = useState(false);
 
-    // Uppercase para padronização
+    //Uppercase para padronização
     const nameUpper = name.toUpperCase();
     const colorUpper = color.toUpperCase();
 
-    // Delay pra ver o loading
+    //Delay pra ver o loading
     const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
-    // Função para mostrar mensagem
+    //Função para mostrar mensagem
     const showMessage = (message, type) => {
         setFloatingMessage({ visible: true, message, type });
         setTimeout(() => {
@@ -26,7 +26,7 @@ export default function Card({ id, code, name, price, color, status }) {
         }, 2000);
     };
 
-    // Handle
+    //Handle
     const handleDelete = async () => {
         if (status === "Em estoque") {
             showMessage("Você não pode excluir um item em estoque!", "warning");
@@ -49,7 +49,7 @@ export default function Card({ id, code, name, price, color, status }) {
         }
     };
 
-    // Componente
+    //Componente
     return (
         <>
             {!deleted && (

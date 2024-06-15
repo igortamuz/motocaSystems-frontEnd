@@ -25,6 +25,7 @@ import {
 import Plus from "../../assets/input/Plus.png";
 
 export default function RegisterForm() {
+    //States
     const [codigo, setCodigo] = useState("");
     const [modelo, setModelo] = useState("");
     const [cor, setCor] = useState("");
@@ -59,12 +60,12 @@ export default function RegisterForm() {
         } else {
             document.removeEventListener("mousedown", handleClickOutside);
         }
-
         return () => {
             document.removeEventListener("mousedown", handleClickOutside);
         };
     }, [isOpen]);
 
+    //Validação de inputs
     const validateInputs = () => {
         let valid = true;
         const newErrors = {
@@ -75,6 +76,7 @@ export default function RegisterForm() {
             selectedOption: ""
         };
 
+        //Retorno de erros de input
         if (codigo.length > 6 || codigo.length < 4 || !/^\d+$/.test(codigo)) {
             newErrors.codigo = "Mínimo de 4 e máximo de 6 números!";
             valid = false;
@@ -104,6 +106,7 @@ export default function RegisterForm() {
         return valid;
     };
 
+    //Handles
     const handleSubmit = async (e) => {
         e.preventDefault();
 
@@ -113,6 +116,7 @@ export default function RegisterForm() {
 
         setLoading(true);
         try {
+            //Verificação do código
             const existingMoto = await axios.get(`http://localhost:3001/motos?code=${codigo}`);
             if (existingMoto.data.length > 0) {
                 setErrors({ ...errors, codigo: "Este código já está em uso. Por favor, escolha outro." });
@@ -122,6 +126,7 @@ export default function RegisterForm() {
                 setErrors({ ...errors, codigo: "" });
             }
 
+            //Formação de valores
             let formattedValue = valor.replace(/[^\d,]/g, "");
             const decimalSeparatorIndex = formattedValue.indexOf(",");
 

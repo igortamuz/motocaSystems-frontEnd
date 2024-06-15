@@ -4,7 +4,6 @@ import Card from "../../components/card/card";
 import { CenteredContainer } from "./styled";
 
 export default function MotoTable() {
-
   //States
   const [motos, setMotos] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
@@ -17,19 +16,17 @@ export default function MotoTable() {
       .catch(error => console.error('Error fetching motos:', error));
   }, []);
 
-  //Filtrow
+  //Filtros
   const filteredMotos = motos.filter(moto =>
     (typeof moto.code === 'string' && moto.code.toLowerCase().includes(searchTerm.toLowerCase())) ||
     (typeof moto.name === 'string' && moto.name.toLowerCase().includes(searchTerm.toLowerCase())) ||
     (typeof moto.color === 'string' && moto.color.toLowerCase().includes(searchTerm.toLowerCase()))
   );
   
-  //Componentes
+  //Página
   return (
     <CenteredContainer>
-
       <PageTitle title="Tabela de Motos" searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
-
       {filteredMotos.map(moto => (
         <Card
           key={moto.id}
@@ -41,7 +38,6 @@ export default function MotoTable() {
           status={moto.status}
         />
       ))}
-
     </CenteredContainer>
   );
 }
