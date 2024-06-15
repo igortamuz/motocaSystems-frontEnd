@@ -42,7 +42,7 @@ git clone https://github.com/igortamuz/teste-motocaSystems-frontEnd.git
 npm  i
 ```
 
-3. Rode o JSON server:
+3. Quando estiver na pasta: `teste-motocaSystems-frontEnd`, Rode o JSON server:
 ```bash
 json-server  --watch  src/db.json  --port  3001
 ```
