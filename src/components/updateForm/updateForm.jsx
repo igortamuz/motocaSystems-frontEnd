@@ -191,6 +191,10 @@ export default function UpdateForm({ id, code, name, price, color, status }) {
         }
     };
 
+    //Remoção de warning
+    if (setCodigo) { }
+
+
     // Componente
     return (
         <>
