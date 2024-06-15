@@ -5,15 +5,13 @@ import UpdateForm from "../../components/updateForm/updateForm";
 import { CenteredContainer } from "./styled";
 
 export default function MotoEdit() {
-    //Id pelo parametro
+    // id pelo parametro e states
     const { id } = useParams();
-
-    //States
     const [moto, setMoto] = useState(null);
     const navigate = useNavigate();
 
     useEffect(() => {
-        // Pegar code pelo id/verificação
+        // Pegar code pelo id
         fetch(`http://localhost:3001/motos/${id}`)
             .then((response) => {
                 if (!response.ok) {
@@ -32,7 +30,7 @@ export default function MotoEdit() {
         return <div style={{ marginLeft: '60px' }}>Não foram encontradas motos...</div>;
     }
 
-    //Página
+    // Componente
     return (
         <CenteredContainer>
             <PageTitle title="Editar" />

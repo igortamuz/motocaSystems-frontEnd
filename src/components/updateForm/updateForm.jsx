@@ -25,6 +25,7 @@ import {
 import SetaUp from "../../assets/input/SetaUp.png";
 
 export default function UpdateForm({ id, code, name, price, color, status }) {
+
     // States
     const [codigo, setCodigo] = useState(code || "");
     const [modelo, setModelo] = useState(name || "");
@@ -130,7 +131,6 @@ export default function UpdateForm({ id, code, name, price, color, status }) {
                 return;
             }
 
-            //Organização, replace e formatação de milhar
             let formattedValue = valor.replace(/[^\d,]/g, '');
             const decimalSeparatorIndex = formattedValue.indexOf(',');
 
@@ -143,7 +143,6 @@ export default function UpdateForm({ id, code, name, price, color, status }) {
                 formattedValue = formattedValue.replace(/\B(?=(\d{3})+(?!\d))/g, '.');
             }
 
-            //Realização do update/chamado da api para update
             const updatedMoto = {
                 code: codigo,
                 name: modelo,
@@ -192,8 +191,9 @@ export default function UpdateForm({ id, code, name, price, color, status }) {
         }
     };
 
-    //Remoção de warning sobre setCodigo
+    //Remoção de warning
     if (setCodigo) { }
+
 
     // Componente
     return (
@@ -239,22 +239,25 @@ export default function UpdateForm({ id, code, name, price, color, status }) {
                         {errors.selectedOption && <DropdownErrorMessage>{errors.selectedOption}</DropdownErrorMessage>}
                     </DropdownContainer>
                 </FormBody>
+
                 <ButtonContainer onClick={handleSubmit} disabled={isSubmitting}>
                     {isSubmitting ? <Spinner /> : <ButtonImage src={SetaUp} alt="SetaUp icon" />}
                     {"ATUALIZAR"}
                 </ButtonContainer>
+
                 <StyledLinkButton to={`/`}>
                     <ButtonContainer>
                         {"RETORNAR A TABELA"}
                     </ButtonContainer>
                 </StyledLinkButton>
+
             </FormContainer>
+
             {floatingMessage.visible && (
                 <FloatingMessage type={floatingMessage.type}>
                     {floatingMessage.message}
                 </FloatingMessage>
             )}
-
         </>
     );
 }

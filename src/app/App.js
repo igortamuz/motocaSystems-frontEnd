@@ -5,6 +5,8 @@ import MotoRegistration from "../pages/motoRegistration/motoRegistration";
 import MotoEdit from "../pages/motoEdit/motoEdit";
 import {AppContainer, GlobalStyle, HeaderContainer, CenterContainer} from "../app/styled"
 
+//json-server --watch src/db.json --port 3001
+
 function App() {
   return (
     <Router>
