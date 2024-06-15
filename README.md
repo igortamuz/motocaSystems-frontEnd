@@ -44,11 +44,24 @@ npm  i
 ```
 
 3. Quando estiver na pasta: `teste-motocaSystems-frontEnd`, Rode o JSON server:
+
+```bash
+npm run server
+```
+
 ```bash
 json-server  --watch  src/db.json  --port  3001
 ```
 
-4. Em outro terminal, rode a aplicação React:
+Obs: O código entrará para você no src e rodará o db.json: "src/db.json").
+
+Caso esteja na pasta anterior da `teste-motocaSystems-frontEnd`:
+
+```bash
+npm run servert
+```
+
+4. Em outro terminal, rode a aplicação `React`:
 
 ```bash
 npm  start
