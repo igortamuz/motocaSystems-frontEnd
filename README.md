@@ -15,7 +15,7 @@
 - Vídeo demonstração do projeto: https://www.youtube.com/watch?v=hxMAuitgrEg
 - Vídeo demonstração da responsividade: https://www.youtube.com/watch?v=B8xUiWAWKEY
 
-7. Este repositório no GitHub já possui 17 cloners únicos. Peço aos usuários que, ao utilizarem partes do código, mencionem sua origem/escritor! 
+7. Este repositório no GitHub já possui 17 cloners únicos até o momento (15/06/2024). Peço aos usuários e concorrentes que, ao utilizarem partes do código, mencionem sua origem/escritor! Agradeço!
 
 ## Páginas:  
 
