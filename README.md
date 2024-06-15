@@ -30,7 +30,7 @@
 
 ## Como executar em desenvolvimento:
 
-1. Clone este repositório.
+1. Clone este repositório:
 
 ```
 git clone https://github.com/igortamuz/teste-motocaSystems-frontEnd.git
