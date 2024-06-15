@@ -4,7 +4,6 @@ import FormTitle from "../formTitle/formTitle";
 import {
     FormContainer,
     InputCode,
-    LabelStyledCode,
     Wrapper,
     HashSymbol,
     LabelStyled,
@@ -24,14 +23,16 @@ import {
 import SetaUp from "../../assets/input/SetaUp.png";
 
 export default function UpdateForm({ id, code, name, price, color, status }) {
-
+    
     // States
+    const [codigo, setCodigo] = useState(code || "");
     const [modelo, setModelo] = useState(name || "");
     const [cor, setCor] = useState(color || "");
     const [valor, setValor] = useState(price || "");
     const [selectedOption, setSelectedOption] = useState(status || "");
     const [isOpen, setIsOpen] = useState(false);
     const [errors, setErrors] = useState({
+        codigo: '',
         modelo: '',
         cor: '',
         valor: '',
@@ -65,6 +66,7 @@ export default function UpdateForm({ id, code, name, price, color, status }) {
     const validateInputs = () => {
         let valid = true;
         const newErrors = {
+            codigo: '',
             modelo: '',
             cor: '',
             valor: '',
@@ -72,6 +74,11 @@ export default function UpdateForm({ id, code, name, price, color, status }) {
         };
 
         //Erros
+        if (codigo.length > 6 || codigo.length < 4 || !/^\d+$/.test(codigo)) {
+            newErrors.codigo = 'Mínimo de 4 e máximo de 6 números!';
+            valid = false;
+        }
+
         if (!modelo.trim()) {
             newErrors.modelo = 'Preencha o modelo da moto.';
             valid = false;
@@ -109,6 +116,7 @@ export default function UpdateForm({ id, code, name, price, color, status }) {
             const existingMotoData = existingMoto.data;
 
             if (
+                existingMotoData.code === codigo &&
                 existingMotoData.name === modelo &&
                 existingMotoData.color === cor &&
                 existingMotoData.price === valor &&
@@ -119,7 +127,7 @@ export default function UpdateForm({ id, code, name, price, color, status }) {
                 setFloatingMessage({ visible: true, message: "Não é necessário fazer o update, pois está idêntico.", type: "warning" });
                 setTimeout(() => {
                     setFloatingMessage(prevFloatingMessage => ({ ...prevFloatingMessage, visible: false }));
-                }, 4000);
+                }, 1000);
                 return;
             }
 
@@ -136,6 +144,7 @@ export default function UpdateForm({ id, code, name, price, color, status }) {
             }
 
             const updatedMoto = {
+                code: codigo,
                 name: modelo,
                 color: cor,
                 price: formattedValue,
@@ -143,6 +152,7 @@ export default function UpdateForm({ id, code, name, price, color, status }) {
             };
 
             await axios.put(`http://localhost:3001/motos/${id}`, updatedMoto);
+
             setFloatingMessage({ visible: true, message: "O registro da moto foi atualizado com sucesso!", type: "success" });
         } catch (error) {
             console.error("Error when updating the moto:", error);
@@ -152,6 +162,13 @@ export default function UpdateForm({ id, code, name, price, color, status }) {
         setTimeout(() => {
             setFloatingMessage(prevFloatingMessage => ({ ...prevFloatingMessage, visible: false }));
         }, 1000);
+    };
+
+    const handleCodigoChange = (value) => {
+        setCodigo(value);
+        if (errors.codigo) {
+            setErrors(prevErrors => ({ ...prevErrors, codigo: '' }));
+        }
     };
 
     const handleItemClick = (option) => {
@@ -187,9 +204,10 @@ export default function UpdateForm({ id, code, name, price, color, status }) {
             <FormContainer>
                 <FormBody>
                     <Wrapper>
-                        <LabelStyledCode>{"Código"}</LabelStyledCode>
+                        <LabelStyled>{"Código"}</LabelStyled>
                         <HashSymbol>#</HashSymbol>
-                        <InputCode value={code} readOnly />
+                        <InputCode value={codigo} onChange={(e) => handleCodigoChange(e.target.value)} readOnly />
+                        {errors.codigo && <ErrorMessage>{errors.codigo}</ErrorMessage>}
                     </Wrapper>
                     <Wrapper>
                         <LabelStyled>{"Modelo da Moto"}</LabelStyled>

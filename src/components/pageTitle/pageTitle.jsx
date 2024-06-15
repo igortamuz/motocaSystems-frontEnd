@@ -33,7 +33,6 @@ export default function PageTitle({ title, searchTerm, setSearchTerm }) {
           <SecondZone>
             <InputContainer>
               <InputImage src={Search} alt="search icon" />
-              {/* Configuração do campo de busca para atualizar searchTerm */}
               <StyledInput placeholder="Buscar por código, nome e cor" value={searchTerm} onChange={handleSearchChange} />
             </InputContainer>
             <Link to="/registro" style={{ textDecoration: 'none' }}>

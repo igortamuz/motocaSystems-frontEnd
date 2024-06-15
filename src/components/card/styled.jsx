@@ -1,24 +1,5 @@
 import styled, { keyframes } from 'styled-components';
 
-const spin = keyframes`
-    0% {
-      transform: rotate(0deg);
-    }
-    100% {
-      transform: rotate(360deg);
-    }
-`;
-
-const Spinner = styled.div`
-    border: 4px solid rgba(255, 255, 255, 0.3);
-    border-top: 4px solid #ff4c51;
-    border-radius: 50%;
-    width: 20px;
-    height: 20px;
-    margin-right: 20px;
-    animation: ${spin} 1s linear infinite;
-`;
-
 const ItemCardContainer = styled.div`
     background-color: #312D4B;
     color: #E7E3FC;
@@ -44,12 +25,23 @@ const ItemCardContainer = styled.div`
             opacity: 1;
         }
     }
+
+  @media only screen and (max-width: 1430px) {
+    width: 80vw;
+  }
+
+  @media only screen and (max-width: 850px) {
+    width: 100vw;
+  }
+
+
 `;
 
 const ItemInfo = styled.div`
   display: flex;
   align-items: center; 
   gap: 10px; 
+  width: 100%;
 `;
 
 const ItemId = styled.h2`
@@ -63,9 +55,14 @@ const ItemId = styled.h2`
   `;
 
 const ItemInfoPart2 = styled.div`
+  width: 20%;
+`;
+
+const ItemInfoPart3 = styled.div`
   display: flex;
   flex-direction: column;
-  margin-left: 98px;
+  margin-left: 58px;
+  width: 50%;
 `;
 
 const ItemNameNBadgeDiv = styled.div`
@@ -140,6 +137,25 @@ const EyeButton = styled.div`
   cursor: pointer;
 `;
 
+const spin = keyframes`
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+`;
+
+const Spinner = styled.div`
+    border: 4px solid rgba(255, 255, 255, 0.3);
+    border-top: 4px solid #ff4c51;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    margin-right: 20px;
+    animation: ${spin} 1s linear infinite;
+`;
+
 const FloatingMessage = styled.div`
   position: fixed;
   top: 20px;
@@ -193,4 +209,4 @@ const FloatingMessage = styled.div`
   }
 `;
 
-export {Spinner, ItemCardContainer, ItemInfo, ItemId, ItemInfoPart2, StatusBadge, ItemActions, TrashButton, EyeButton, ItemName, ItemColor, ItemValue, ItemNameNBadgeDiv, FloatingMessage };
+export { Spinner, ItemInfoPart2, ItemCardContainer, ItemInfo, ItemId, ItemInfoPart3, StatusBadge, ItemActions, TrashButton, EyeButton, ItemName, ItemColor, ItemValue, ItemNameNBadgeDiv, FloatingMessage };

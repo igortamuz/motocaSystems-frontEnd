@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { Spinner, ItemCardContainer, ItemInfo, ItemId, ItemInfoPart2, StatusBadge, ItemActions, TrashButton, EyeButton, ItemName, ItemValue, ItemColor, ItemNameNBadgeDiv, FloatingMessage } from './styled';
+import { Spinner, ItemCardContainer, ItemInfo, ItemId, ItemInfoPart2, ItemInfoPart3, StatusBadge, ItemActions, TrashButton, EyeButton, ItemName, ItemValue, ItemColor, ItemNameNBadgeDiv, FloatingMessage } from './styled';
 import trashIcon from './../../assets/buttons/Trash.png';
 import eyeIcon from './../../assets/buttons/Eye.png';
 import { Link } from 'react-router-dom';
@@ -48,15 +48,18 @@ export default function Card({ id, code, name, price, color, status }) {
             {!deleted && (
                 <ItemCardContainer className={deleted ? 'fade-out' : 'fade-in'}>
                     <ItemInfo>
-                        <ItemId>#{code}</ItemId>
                         <ItemInfoPart2>
+                            <ItemId>#{code}</ItemId>
+                        </ItemInfoPart2>
+
+                        <ItemInfoPart3>
                             <ItemNameNBadgeDiv>
                                 <ItemName>{nameUpper}</ItemName>
                                 <StatusBadge status={status}>{status}</StatusBadge>
                             </ItemNameNBadgeDiv>
                             <ItemValue>Valor: R$ {price}</ItemValue>
                             <ItemColor>Cor: {colorUpper}</ItemColor>
-                        </ItemInfoPart2>
+                        </ItemInfoPart3>
                     </ItemInfo>
                     <ItemActions>
                         {loading ? (

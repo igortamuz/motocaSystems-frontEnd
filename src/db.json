@@ -1,28 +1,12 @@
 {
   "motos": [
     {
-      "code": "78567",
-      "name": "MYSTIC MOTO",
-      "color": "AMARELO",
-      "price": "31.800,00",
-      "status": "Sem estoque",
-      "id": "m3n4"
-    },
-    {
-      "id": "s9t0",
-      "code": "78570",
-      "name": "FROST MOTO",
-      "color": "BRANCO",
-      "price": "33.500,00",
-      "status": "Em trânsito"
-    },
-    {
-      "id": "u1v2",
       "code": "78571",
       "name": "MIDNIGHT MOTO",
       "color": "PRETO",
       "price": "31.700,00",
-      "status": "Em estoque"
+      "status": "Sem estoque",
+      "id": "u1v2"
     },
     {
       "id": "w3x4",

@@ -74,7 +74,6 @@ export default function RegisterForm() {
         };
 
         //Erros
-
         if (codigo.length > 6 || codigo.length < 4 || !/^\d+$/.test(codigo)) {
             newErrors.codigo = 'Mínimo de 4 e máximo de 6 números!';
             valid = false;
@@ -115,7 +114,6 @@ export default function RegisterForm() {
         try {
 
             //Verificação de uso de código
-
             const existingMoto = await axios.get(`http://localhost:3001/motos?code=${codigo}`);
             if (existingMoto.data.length > 0) {
                 setErrors({ ...errors, codigo: 'Este código já está em uso. Por favor, escolha outro.' });
@@ -128,7 +126,6 @@ export default function RegisterForm() {
             const decimalSeparatorIndex = formattedValue.indexOf(',');
 
             //Verificação de milhar!
-
             if (decimalSeparatorIndex !== -1 && decimalSeparatorIndex !== formattedValue.length - 1) {
                 const integerPart = formattedValue.substring(0, decimalSeparatorIndex);
                 const decimalPart = formattedValue.substring(decimalSeparatorIndex + 1);
@@ -147,7 +144,6 @@ export default function RegisterForm() {
             };
 
             //Post do axios
-
             await axios.post("http://localhost:3001/motos", newMoto);
             setCodigo("");
             setModelo("");
@@ -164,18 +160,15 @@ export default function RegisterForm() {
             });
 
             //Mensagem de sucesso
-
             setFloatingMessage({ visible: true, message: "A Moto foi RegistradA com sucesso!", type: "success" });
         } catch (error) {
             console.error("Error when creating the moto:", error);
 
             // Mensagem de erro
-
             setFloatingMessage({ visible: true, message: "Houve erro ao registrar a moto!", type: "error" });
         }
 
         //Esconder a mensagem em 4 segundos
-
         setTimeout(() => {
             setFloatingMessage({ ...floatingMessage, visible: false });
         }, 4000);

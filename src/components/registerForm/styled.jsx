@@ -62,6 +62,11 @@ const Input = styled.input`
     border-color: #E7E3FC;
     box-shadow: 0 0 5px rgba(46, 27, 71, 0.5);
   }
+
+  @media only screen and (max-width: 850px) {
+      width: 100%;
+  }
+
 `;
 
 const InputCode = styled.input`
@@ -87,6 +92,11 @@ const InputCode = styled.input`
     border-color: #E7E3FC;
     box-shadow: 0 0 5px rgba(46, 27, 71, 0.5);
   }
+
+  @media only screen and (max-width: 850px) {
+      width: 100%;
+  }
+
 `;
 
 const HashSymbol = styled.div`
@@ -118,6 +128,11 @@ const DropdownButton = styled.button`
   appearance: none;
   -webkit-appearance: none;
   -moz-appearance: none;
+
+  @media only screen and (max-width: 850px) {
+      width: 100%;
+  }
+
 `;
 
 const Textbutton = styled.p`
@@ -135,6 +150,11 @@ const DropdownContent = styled.div`
   z-index: 1;
   border-radius: 4px; 
   width: 419px;
+
+  @media only screen and (max-width: 850px) {
+      width: 100%;
+  }
+
 `;
 
 const DropdownItem = styled.div`
@@ -164,6 +184,10 @@ const ButtonContainer = styled.button`
   font-weight: 600;
   margin-top: 35px;
   transition: transform 0.1s ease;
+
+  @media only screen and (max-width: 850px) {
+      width: 100%;
+  }
 
   &:active {
     transform: scale(0.98);
@@ -215,7 +239,7 @@ const FloatingMessage = styled.div`
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   z-index: 1000;
   opacity: 0;
-  animation: fadeInOut 1.5s forwards;
+  animation: fadeInOut 0.75s forwards;
 
   @keyframes fadeInOut {
     0% {
@@ -233,7 +257,7 @@ const FloatingMessage = styled.div`
   }
 
   &.fade-out {
-    animation: fadeOut 1.5s forwards;
+    animation: fadeOut 0.75s forwards;
   }
 
   @keyframes fadeOut {
@@ -245,9 +269,6 @@ const FloatingMessage = styled.div`
     }
   }
 `;
-
-
-
 
 export {
   FormContainer,

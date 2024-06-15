@@ -2,16 +2,37 @@ import styled from 'styled-components';
 
 const Container = styled.div`
   text-align: center;
+  width: 1408px;
+
+  @media only screen and (max-width: 1430px) {
+    width: 100vw;
+  }
 `;
 
 const BigZone = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+
+  @media only screen and (max-width: 850px) {
+    flex-direction: column;
+    justify-content: center;
+  }
 `;
 
 const TitleContainer = styled.div`
   text-align: left;
+
+    @media only screen and (max-width: 850px) {
+    display: flex;
+    justify-content: center;
+    margin-left: 0;
+  }
+
+  @media only screen and (max-width: 1430px) {
+    margin-left: 20px;
+  }
+
 `;
 
 const StyledPageTitle = styled.h1`
@@ -24,17 +45,34 @@ const StyledPageTitle = styled.h1`
 const LargeLine = styled.hr`
   border: 0;
   border-top: 0.5px solid #CAC9CD;
-  width: 1408px;
   margin: 0 auto;
+  width: 1408px;
+
+  @media only screen and (max-width: 1430px) {
+    display: flex;
+    justify-content: center;
+    width: 100vw;
+  }
 `;
 
 const SecondZone = styled.div`
   display: flex;
   flex-direction: row;
+  
+  @media only screen and (max-width: 850px) {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+    margin-right: 0;
+  }
+
+  @media only screen and (max-width: 1430px) {
+    margin-right: 20px;
+  }
 `
 
 const InputContainer = styled.div`
-  width: 385px;
+  width: 300px;
   height: 35px;
   display: flex;
   align-items: center;
@@ -42,6 +80,10 @@ const InputContainer = styled.div`
   border-radius: 5px;
   border: 1px solid #CAC9CD;
   margin-right: 26px;
+
+  @media only screen and (max-width: 850px) {
+    width: 40%;
+  }
 `;
 
 const InputImage = styled.img`
@@ -61,8 +103,10 @@ const StyledInput = styled.input`
   font-weight: 400;
   font-size: 11px;
 
-  &::placeholder {
-    color: #CAC9CD; 
+  @media only screen and (max-width: 850px) {
+    &::placeholder {
+    color: #2A233C; 
+  }
   }
 `;
 

@@ -21,9 +21,9 @@ export default function MotoTable() {
 
   //Filtrow
   const filteredMotos = motos.filter(moto =>
-    moto.code.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    moto.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    moto.color.toLowerCase().includes(searchTerm.toLowerCase())
+    typeof moto.code === 'string' && moto.code.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    typeof moto.name === 'string' && moto.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    typeof moto.color === 'string' && moto.color.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
   //Componentes
