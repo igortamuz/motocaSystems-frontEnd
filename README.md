@@ -47,7 +47,7 @@ npm  i
 json-server  --watch  src/db.json  --port  3001
 ```
 
-4. Rode a aplicação React:
+4. Em outro terminal, rode a aplicação React:
 
 ```bash
 npm  start
