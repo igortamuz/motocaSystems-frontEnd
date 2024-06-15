@@ -1,6 +1,6 @@
 ## Informações básicas (Leitura Opcional)
 
-1. Este repositório no GitHub já possui 17 cloners únicos até o momento (15/06/2024). Peço aos usuários e concorrentes que, ao utilizarem partes do código, mencionem sua origem/escritor! Agradeço!
+1. Este repositório no GitHub já possui 20 cloners únicos até o momento (15/06/2024), significando que 20 ou mais pessoas diferentes estão o acessando. Peço aos usuários e concorrentes que, ao utilizarem partes do código, mencionem sua origem/escritor! Agradeço desde já!
 2. Esse projeto foi desenvolvimento foi do dia 14/06/2024 ao dia 15/06/2024.
 3. O Desenvolvimento foi dividido em dois dias: 
    - 1º Dia: Criação e implementação do visual e funções gerais.
