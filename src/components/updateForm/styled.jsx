@@ -308,6 +308,7 @@ const Spinner = styled.div`
 
 const StyledLinkButton = styled(Link)`
   text-decoration: none;
+  width: 100%;
 `;
 
 export {

@@ -1,29 +1,36 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import PageTitle from "../../components/pageTitle/pageTitle";
 import UpdateForm from "../../components/updateForm/updateForm";
 import { CenteredContainer } from "./styled";
 
 export default function MotoEdit() {
-    //id pelo parametro e states
+    // id pelo parametro e states
     const { id } = useParams();
     const [moto, setMoto] = useState(null);
+    const navigate = useNavigate();
 
     useEffect(() => {
         // Pegar code pelo id
         fetch(`http://localhost:3001/motos/${id}`)
-            .then((response) => response.json())
+            .then((response) => {
+                if (!response.ok) {
+                    throw new Error("ID inválido");
+                }
+                return response.json();
+            })
             .then((data) => setMoto(data))
-            .catch((error) =>
-                console.error("Erro ao buscar detalhes da moto:", error)
-            );
-    }, [id]);
+            .catch((error) => {
+                console.error("Erro ao buscar detalhes da moto:", error);
+                navigate("/");
+            });
+    }, [id, navigate]);
 
     if (!moto) {
         return <div style={{ marginLeft: '60px' }}>Não foram encontradas motos...</div>;
     }
 
-    //Componente
+    // Componente
     return (
         <CenteredContainer>
             <PageTitle title="Editar" />
@@ -33,7 +40,8 @@ export default function MotoEdit() {
                 name={moto.name}
                 price={moto.price}
                 color={moto.color}
-                status={moto.status} />
+                status={moto.status}
+            />
         </CenteredContainer>
     );
 }
