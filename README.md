@@ -15,6 +15,8 @@
 
 - Vídeo demonstração do projeto: https://www.youtube.com/watch?v=hxMAuitgrEg
 - Vídeo demonstração da responsividade: https://www.youtube.com/watch?v=B8xUiWAWKEY
+8. Os itens "Em estoque", não podem ser apagados! Para evitar que, um funcionário o apague sem intenção. Sendo assim, para apagá-lo você deve ir em sua edição e editá-lo para "Em trânsito" ou "Sem estoque"!
+9. O código da moto, ex: "#0001", não pode ser repetido para evitar diferentes nomeações, cores e preços utilizando do mesmo código!
 
 ## Páginas:  
 
